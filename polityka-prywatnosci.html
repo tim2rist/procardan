@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Polityka Prywatności | ProCardan Wrocław</title>
+  <link rel="icon" type="image/png" href="/logo_mark.png" />
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --color-white: #ffffff;
+      --color-charcoal: #121212;
+      --color-gray-dark: #1f1f1f;
+      --color-gray-text: #4a5568;
+      --color-gray-muted: #718096;
+      --color-accent-red: #e01e2b;
+      --color-accent-hover: #b9151e;
+      --color-border: #e2e8f0;
+      
+      --font-body: 'Inter', sans-serif;
+      --font-headings: 'Outfit', sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-body);
+      color: var(--color-gray-text);
+      line-height: 1.7;
+      background-color: var(--color-white);
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Header */
+    header {
+      background-color: var(--color-white);
+      border-bottom: 1px solid var(--color-border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 15px 0;
+    }
+
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      font-family: var(--font-headings);
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--color-charcoal);
+    }
+
+    .logo-accent {
+      color: var(--color-accent-red);
+    }
+
+    .btn-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 18px;
+      background-color: var(--color-charcoal);
+      color: var(--color-white);
+      text-decoration: none;
+      font-family: var(--font-headings);
+      font-size: 14px;
+      font-weight: 600;
+      border-radius: 6px;
+      transition: background-color 0.2s ease;
+    }
+
+    .btn-back:hover {
+      background-color: var(--color-accent-red);
+    }
+
+    /* Main Content */
+    main {
+      flex: 1;
+      padding: 60px 0;
+    }
+
+    .policy-container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      font-family: var(--font-headings);
+      font-size: 36px;
+      font-weight: 800;
+      color: var(--color-charcoal);
+      margin-bottom: 15px;
+      line-height: 1.2;
+    }
+
+    .policy-meta {
+      font-size: 14px;
+      color: var(--color-gray-muted);
+      margin-bottom: 40px;
+      border-bottom: 1px solid var(--color-border);
+      padding-bottom: 15px;
+    }
+
+    h2 {
+      font-family: var(--font-headings);
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--color-charcoal);
+      margin-top: 35px;
+      margin-bottom: 15px;
+    }
+
+    p {
+      margin-bottom: 15px;
+      text-align: justify;
+    }
+
+    ul, ol {
+      margin-left: 20px;
+      margin-bottom: 20px;
+    }
+
+    li {
+      margin-bottom: 8px;
+    }
+
+    strong {
+      color: var(--color-charcoal);
+    }
+
+    .contact-block {
+      background-color: #f7fafc;
+      border-left: 4px solid var(--color-accent-red);
+      padding: 20px;
+      border-radius: 0 6px 6px 0;
+      margin: 30px 0;
+    }
+
+    /* Footer */
+    footer {
+      background-color: var(--color-charcoal);
+      color: #cbd5e0;
+      padding: 40px 0 20px 0;
+      margin-top: auto;
+    }
+
+    .footer-container {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+
+    .footer-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      font-family: var(--font-headings);
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--color-white);
+    }
+
+    .footer-logo-accent {
+      color: var(--color-accent-red);
+    }
+
+    .footer-desc {
+      max-width: 400px;
+      font-size: 14px;
+      color: #a0aec0;
+      margin-top: 10px;
+    }
+
+    .footer-contact-info {
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .footer-contact-info a {
+      color: var(--color-white);
+      text-decoration: none;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      font-size: 13px;
+      color: #a0aec0;
+    }
+
+    .footer-bottom a {
+      color: #a0aec0;
+      text-decoration: none;
+      margin-left: 15px;
+      transition: color 0.2s ease;
+    }
+
+    .footer-bottom a:hover {
+      color: var(--color-white);
+    }
+
+    @media (max-width: 768px) {
+      .header-container {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+      }
+      h1 {
+        font-size: 28px;
+      }
+      .footer-top {
+        flex-direction: column;
+        gap: 25px;
+      }
+      .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+      }
+      .footer-bottom a {
+        margin: 0 8px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="container header-container">
+      <a href="/" class="logo">
+        <img src="/logo_mark.png" alt="ProCardan Logo Mark" style="height: 32px; width: auto;" />
+        <span>Pro<span class="logo-accent">Cardan</span></span>
+      </a>
+      <a href="/" class="btn-back">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 4px;">
+          <line x1="19" y1="12" x2="5" y2="12"></line>
+          <polyline points="12 19 5 12 12 5"></polyline>
+        </svg>
+        Powrót do serwisu
+      </a>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container">
+    <article class="policy-container">
+      <h1>Polityka Prywatności i RODO</h1>
+      <div class="policy-meta">Ostatnia aktualizacja: 8 lipca 2026 r.</div>
+      
+      <p>
+        Niniejsza Polityka Prywatności określa zasady przetwarzania i ochrony danych osobowych osób korzystających z serwisu internetowego działającego pod adresem <strong>procardan.pl</strong>. Państwa prywatność jest dla nas kluczowa, dlatego dokładamy wszelkich starań, aby dane były przetwarzane w sposób bezpieczny i zgodny z prawem.
+      </p>
+
+      <h2>1. Administrator Danych Osobowych</h2>
+      <p>
+        Administratorem Państwa danych osobowych przetwarzanych w ramach serwisu jest:<br>
+        <strong>ProCardan</strong><br>
+        ul. Wodzisławska 1, 52-017 Wrocław<br>
+        E-mail: <a href="mailto:procardan1@gmail.com" style="color: var(--color-accent-red);">procardan1@gmail.com</a>
+      </p>
+
+      <h2>2. Cele Przetwarzania Danych</h2>
+      <p>Państwa dane osobowe (takie jak imię, nazwisko, numer telefonu oraz treść wiadomości) przetwarzane są w następujących celach:</p>
+      <ul>
+        <li><strong>Obsługa zapytania ofertowego</strong> – na podstawie udzielonej przez Państwa zgody (art. 6 ust. 1 lit. a RODO) poprzez wypełnienie i wysłanie formularza kontaktowego.</li>
+        <li><strong>Nawiązanie kontaktu i prezentacja oferty</strong> – w celu podjęcia działań przed zawarciem umowy lub wykonania usługi (art. 6 ust. 1 lit. b RODO).</li>
+        <li><strong>Cele statystyczne i analityczne</strong> – w celu optymalizacji działania serwisu (uzasadniony interes Administratora – art. 6 ust. 1 lit. f RODO).</li>
+      </ul>
+
+      <h2>3. Okres Przechowywania Danych</h2>
+      <p>Dane osobowe będą przechowywane przez okres:</p>
+      <ul>
+        <li>Niezbędny do obsługi zapytania ofertowego i udzielenia odpowiedzi.</li>
+        <li>Do momentu wycofania przez Państwa zgody na przetwarzanie danych osobowych.</li>
+        <li>Wycofanie zgody nie wpływa na zgodność z prawem przetwarzania, którego dokonano na podstawie zgody przed jej wycofaniem.</li>
+      </ul>
+
+      <h2>4. Odbiorcy Danych</h2>
+      <p>
+        Państwa dane osobowe nie są sprzedawane ani udostępniane podmiotom trzecim w celach marketingowych. Odbiorcami danych mogą być wyłącznie podmioty techniczne wspierające działanie naszej poczty elektronicznej lub serwera (hostingodawca), z którymi zawarliśmy stosowne umowy powierzenia przetwarzania danych osobowych.
+      </p>
+
+      <h2>5. Prawa Użytkownika (RODO)</h2>
+      <p>W związku z przetwarzaniem danych osobowych, przysługują Państwu następujące prawa:</p>
+      <ol>
+        <li>Prawo dostępu do treści swoich danych osobowych oraz otrzymania ich kopii.</li>
+        <li>Prawo do sprostowania (poprawiania) swoich danych.</li>
+        <li>Prawo do usunięcia danych (prawo do bycia zapomnianym).</li>
+        <li>Prawo do ograniczenia przetwarzania danych.</li>
+        <li>Prawo do przenoszenia danych.</li>
+        <li>Prawo do cofnięcia zgody w dowolnym momencie bez wpływu na zgodność z prawem wcześniejszego przetwarzania.</li>
+        <li>Prawo do wniesienia skargi do organu nadzorczego – Prezesa Urzędu Ochrony Danych Osobowych (UODO), jeśli uznają Państwo, że przetwarzanie narusza przepisy RODO.</li>
+      </ol>
+
+      <div class="contact-block">
+        <h3 style="margin-bottom: 8px; color: var(--color-charcoal); font-family: var(--font-headings);">Realizacja praw</h3>
+        <p style="margin-bottom: 0;">
+          W celu realizacji swoich praw, prosimy o przesłanie stosownego zgłoszenia na nasz adres e-mail: <strong>procardan1@gmail.com</strong>.
+        </p>
+      </div>
+
+      <h2>6. Pliki Cookies (Ciasteczka)</h2>
+      <p>
+        Nasz serwis wykorzystuje pliki cookies do prawidłowego działania strony, zapamiętywania ustawień (np. wyboru zgód cookies) oraz zbierania anonimowych statystyk. Mogą Państwo zarządzać ustawieniami ciasteczek bezpośrednio z poziomu swojej przeglądarki internetowej lub za pomocą banera ustawień ciasteczek dostępnego na naszej witrynie.
+      </p>
+
+      <h2>7. Zmiany w Polityce Prywatności</h2>
+      <p>
+        Administrator zastrzega sobie prawo do wprowadzania zmian w niniejszej Polityce Prywatności w związku z rozwojem technologicznym lub zmianami w przepisach prawa. Wszelkie zmiany będą publikowane bezpośrednio na tej stronie.
+      </p>
+    </article>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container footer-container">
+      <div class="footer-top">
+        <div>
+          <a href="/" class="footer-logo">
+            <img src="/logo_mark.png" alt="ProCardan Logo Mark" style="height: 28px; width: auto;" />
+            <span>Pro<span class="footer-logo-accent">Cardan</span></span>
+          </a>
+          <p class="footer-desc">
+            Profesjonalny serwis wałów napędowych. Regeneracja, dynamiczne wyważanie oraz produkcja wałów kardana we Wrocławiu.
+          </p>
+        </div>
+        <div class="footer-contact-info">
+          <p><strong>ProCardan Wrocław</strong></p>
+          <p>ul. Wodzisławska 1, 52-017 Wrocław</p>
+          <p>Tel: <a href="tel:500052323">500-05-23-23</a></p>
+          <p>E-mail: <a href="mailto:procardan1@gmail.com">procardan1@gmail.com</a></p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 ProCardan. Wszelkie prawa zastrzeżone.</p>
+        <div>
+          <a href="/">Strona główna</a>
+          <a href="/polityka-prywatnosci.html">Polityka Prywatności</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
