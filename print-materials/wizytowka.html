@@ -74,42 +74,37 @@
   <div class="print-container flex flex-col items-center gap-8">
 
     <!-- ════════════════ FRONT SIDE ════════════════ -->
-    <div class="card-box shadow-2xl rounded-sm p-[5.5mm] flex flex-col justify-between border border-slate-200">
+    <div class="card-box shadow-2xl rounded-sm p-[6mm] flex flex-col justify-between border border-slate-200">
       
-      <!-- Top: Perfectly Centered Header & Logo -->
-      <div class="flex flex-col items-center text-center">
-        <div class="flex items-center justify-center gap-[2.5mm]">
+      <!-- Top: Strict Left-Aligned Header & Logo -->
+      <div class="text-left">
+        <div class="flex items-center gap-[2.5mm]">
           <img src="../public/logo_mark.png" alt="ProCardan Logo" class="h-[7.5mm] w-auto" />
           <span class="text-[12pt] font-black text-slate-900 tracking-tight leading-none">
             Pro<span class="text-red-500">Cardan</span>
           </span>
         </div>
-        <p class="text-[5pt] font-bold text-slate-500 uppercase tracking-widest mt-[1.2mm] leading-none">
+        <p class="text-[5pt] font-bold text-slate-500 uppercase tracking-widest mt-[1.4mm] leading-none">
           REGENERACJA WAŁÓW NAPĘDOWYCH
         </p>
       </div>
 
-      <!-- Center: 100% Uniform Contacts Block -->
-      <div class="flex flex-col gap-[1.8mm] my-auto px-[2mm]">
-        <div class="flex items-center gap-[2.5mm]">
-          <span class="text-[6pt] font-bold text-red-500 min-w-[8.5mm] uppercase tracking-wider">TEL:</span>
-          <span class="text-[7pt] font-bold text-slate-900 tracking-tight">+48 500-05-23-23</span>
-        </div>
-        <div class="flex items-center gap-[2.5mm]">
-          <span class="text-[6pt] font-bold text-red-500 min-w-[8.5mm] uppercase tracking-wider">WWW:</span>
-          <span class="text-[7pt] font-bold text-slate-900 tracking-tight">WWW.PROCARDAN.PL</span>
-        </div>
-        <div class="flex items-center gap-[2.5mm]">
-          <span class="text-[6pt] font-bold text-red-500 min-w-[8.5mm] uppercase tracking-wider">MAIL:</span>
-          <span class="text-[7pt] font-bold text-slate-900 tracking-tight">procardan1@gmail.com</span>
-        </div>
-        <div class="flex items-center gap-[2.5mm]">
-          <span class="text-[6pt] font-bold text-red-500 min-w-[8.5mm] uppercase tracking-wider">ADRES:</span>
-          <span class="text-[7pt] font-bold text-slate-900 tracking-tight">ul. Wodzisławska 1, 52-017 Wrocław</span>
-        </div>
+      <!-- Center: Perfect CSS Grid Contacts Block (Flush Left Axis) -->
+      <div class="grid grid-cols-[auto_1fr] gap-x-[3.5mm] gap-y-[1.8mm] my-auto items-center">
+        <span class="text-[6pt] font-bold text-red-500 tracking-wider">TEL:</span>
+        <span class="text-[7pt] font-bold text-slate-900 tracking-tight">+48 500-05-23-23</span>
+
+        <span class="text-[6pt] font-bold text-red-500 tracking-wider">WWW:</span>
+        <span class="text-[7pt] font-bold text-slate-900 tracking-tight">www.procardan.pl</span>
+
+        <span class="text-[6pt] font-bold text-red-500 tracking-wider">MAIL:</span>
+        <span class="text-[7pt] font-bold text-slate-900 tracking-tight">procardan1@gmail.com</span>
+
+        <span class="text-[6pt] font-bold text-red-500 tracking-wider">ADRES:</span>
+        <span class="text-[7pt] font-bold text-slate-900 tracking-tight">ul. Wodzisławska 1, 52-017 Wrocław</span>
       </div>
 
-      <!-- Bottom Minimalist Subtext -->
+      <!-- Bottom Subtext -->
       <div class="pt-[1.5mm] border-t border-slate-100 flex items-center justify-between text-[4.8pt] font-semibold text-slate-400">
         <span>Dolny Śląsk · Cała Polska</span>
         <span class="text-red-500">Ekspres 1-4h / Standard 24-48h</span>
@@ -118,17 +113,17 @@
     </div>
 
     <!-- ════════════════ BACK SIDE ════════════════ -->
-    <div class="card-box shadow-2xl rounded-sm p-[5.5mm] flex flex-col justify-between border border-slate-200">
+    <div class="card-box shadow-2xl rounded-sm p-[6mm] flex flex-col justify-between border border-slate-200">
 
-      <!-- Header: Centered -->
-      <div class="text-center">
+      <!-- Header: Left-Aligned -->
+      <div class="text-left">
         <h2 class="text-[7.2pt] font-bold text-slate-900 tracking-wider uppercase">
           PROFESJONALNY SERWIS WAŁÓW NAPĘDOWYCH:
         </h2>
       </div>
 
       <!-- Clean 8 Services List (2 Columns) -->
-      <div class="grid grid-cols-2 gap-x-[4mm] gap-y-[2.2mm] my-auto px-[2mm]">
+      <div class="grid grid-cols-2 gap-x-[4mm] gap-y-[2.2mm] my-auto">
         <div class="flex items-center gap-[2mm]">
           <span class="text-red-500 text-[8pt] leading-none font-bold">•</span>
           <span class="text-[6pt] font-semibold text-slate-800">Regeneracja wałów</span>
