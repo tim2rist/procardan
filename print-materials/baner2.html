@@ -3,263 +3,225 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Baner 2 — ProCardan | Print Preview</title>
+  <title>Baner 2 — ProCardan | Druk PDF</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
       theme: {
         extend: {
           colors: {
-            brand: '#dc2626',
-            ink:   '#0f172a',
-            muted: '#64748b',
+            brand: '#ef4444',
+            'brand-dark': '#dc2626',
+            ink: '#0f172a',
           },
           fontFamily: {
             heading: ['"Share Tech Mono"', 'monospace'],
-            body:    ['"Inter"', 'sans-serif'],
-            mono:    ['"JetBrains Mono"', 'monospace'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+            body: ['"Inter"', 'sans-serif'],
           },
         },
       },
     };
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Share+Tech+Mono&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700;800&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
 
   <style>
-    body { background: #f1f5f9; font-family: 'Inter', sans-serif; }
-
-    /* Banner: 2.5:1 landscape — phone-first direct response */
-    .banner-face {
-      aspect-ratio: 2.5 / 1;
-      width: 100%;
-      max-width: 1380px;
-      background: #ffffff;
+    * {
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+      box-sizing: border-box;
     }
 
-    /* Engineering tick rule marks */
-    .tick-rule {
-      background-image: repeating-linear-gradient(
-        90deg,
-        #dc2626 0px, #dc2626 1px,
-        transparent 1px, transparent 20px
-      );
-      opacity: 0.35;
+    body {
+      background-color: #0f172a;
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    .banner-container {
+      width: 100%;
+      max-width: 1360px;
+      aspect-ratio: 2.5 / 1;
+      background: #ffffff;
+      position: relative;
+      overflow: hidden;
+      break-inside: avoid;
+      page-break-inside: avoid;
     }
 
     @media print {
-      * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
-      body { background: #ffffff !important; margin: 0; padding: 0; }
-      .no-print { display: none !important; }
-      .banner-face {
-        width: 250cm !important;
-        height: 100cm !important;
-        max-width: none !important;
-        aspect-ratio: unset !important;
+      body {
+        background: #ffffff !important;
+        padding: 0 !important;
+        margin: 0 !important;
       }
-      @page { size: 250cm 100cm landscape; margin: 0; }
+      .no-print {
+        display: none !important;
+      }
+      .print-wrapper {
+        padding: 0 !important;
+        margin: 0 !important;
+        width: 100vw !important;
+        min-height: 100vh !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+      }
+      .banner-container {
+        width: 100% !important;
+        max-width: 100vw !important;
+        height: auto !important;
+        box-shadow: none !important;
+        border: none !important;
+        margin: 0 !important;
+      }
+      @page {
+        size: auto;
+        margin: 0mm;
+      }
     }
   </style>
 </head>
-<body>
+<body class="min-h-screen flex flex-col items-center py-8">
 
-<!-- ══════════════════════════════════════════════
-     TOOLBAR
-══════════════════════════════════════════════ -->
-<header class="no-print bg-white border-b border-slate-200 px-8 py-4 flex items-center justify-between sticky top-0 z-50 shadow-sm">
-  <div class="flex items-center gap-3">
-    <div class="w-6 h-6 bg-brand rounded flex items-center justify-center">
-      <span class="text-white font-mono text-xs font-bold">PC</span>
-    </div>
-    <span class="text-slate-800 font-semibold text-sm">ProCardan Print Studio</span>
-    <span class="text-slate-300">/</span>
-    <span class="text-slate-500 text-sm font-mono">baner2.html</span>
-  </div>
-  <div class="flex items-center gap-3">
-    <a href="wizytowka.html" class="text-slate-500 hover:text-brand text-xs font-mono px-3 py-1.5 border border-slate-200 rounded hover:border-brand transition-colors">← Wizytówka</a>
-    <a href="baner1.html"   class="text-slate-500 hover:text-brand text-xs font-mono px-3 py-1.5 border border-slate-200 rounded hover:border-brand transition-colors">← Baner 1</a>
-    <button onclick="window.print()"
-      class="flex items-center gap-2 bg-brand hover:bg-red-700 text-white text-sm font-semibold px-5 py-2 rounded-md transition-colors shadow-sm">
-      <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
-      Drukuj / PDF
+  <!-- ── Top Action Bar (Screen Only) ── -->
+  <div class="no-print mb-8 sticky top-4 z-50">
+    <button onclick="window.print()" class="flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white font-mono text-sm font-bold px-6 py-3 rounded-lg shadow-xl hover:shadow-red-500/20 transition-all border border-red-500/40 cursor-pointer">
+      <span>🖨️</span>
+      <span>Drukuj PDF / Zapisz</span>
     </button>
   </div>
-</header>
 
-<!-- ══════════════════════════════════════════════
-     PAGE HEADER
-══════════════════════════════════════════════ -->
-<div class="no-print max-w-screen-xl mx-auto px-8 pt-10 pb-4">
-  <div class="flex items-end justify-between">
-    <div>
-      <p class="text-brand text-xs font-mono tracking-widest uppercase mb-1">Projekt 03 / 03</p>
-      <h1 class="text-slate-900 text-2xl font-bold">Baner Reklamowy — Wersja 2</h1>
-      <p class="text-slate-500 text-sm mt-1">Format: 250 × 100 cm &nbsp;·&nbsp; Proporcja 2.5:1 &nbsp;·&nbsp; Phone-first · Konwersja bezpośrednia</p>
-    </div>
-    <div class="text-right text-xs font-mono text-slate-400">
-      <p>Wariant: Direct Response</p>
-      <p>Minimalny layout · max. czytelność</p>
-    </div>
-  </div>
-  <div class="mt-4 h-px bg-slate-200"></div>
-</div>
+  <!-- ── Print Wrapper ── -->
+  <div class="print-wrapper w-full max-w-7xl px-4 flex justify-center items-center">
 
-<!-- ══════════════════════════════════════════════
-     BANNER 2 PREVIEW
-══════════════════════════════════════════════ -->
-<div class="no-print max-w-screen-xl mx-auto px-8 py-8 pb-16">
-
-  <div class="banner-face mx-auto relative shadow-2xl border border-slate-300 rounded-sm overflow-hidden" style="box-shadow: 0 25px 60px rgba(0,0,0,0.15);">
-
-    <!-- ── TOP ACCENT: tick ruler + red bar ── -->
-    <div style="position:absolute;top:0;left:0;right:0;z-index:10;">
-      <!-- Solid red top stripe -->
-      <div style="height:2%;background:#dc2626;"></div>
-      <!-- Tick marks ruler strip -->
-      <div class="tick-rule" style="height:1.5%;"></div>
-    </div>
-
-    <!-- ── BOTTOM ACCENT: tick ruler + red bar ── -->
-    <div style="position:absolute;bottom:0;left:0;right:0;z-index:10;">
-      <div class="tick-rule" style="height:1.5%;"></div>
-      <div style="height:2%;background:#dc2626;display:flex;align-items:center;padding:0 2.5%;">
-        <span style="font-family:'JetBrains Mono',monospace;font-size:clamp(5px,0.55vw,10px);color:rgba(255,255,255,0.75);letter-spacing:0.3em;">
-          WWW.PROCARDAN.PL &nbsp;·&nbsp; procardan1@gmail.com &nbsp;·&nbsp; ul. Wodzisławska 1, 52-017 Wrocław
+    <!-- ════════════════ BANNER 2 (2.5:1 Phone Focus) ════════════════ -->
+    <div class="banner-container shadow-2xl rounded-sm border border-slate-300 flex flex-col justify-between">
+      
+      <!-- Top Red Accent Header -->
+      <div class="w-full h-[4%] bg-red-600 flex items-center px-[3%] justify-between">
+        <span class="font-mono text-[0.7vw] font-bold text-white tracking-[0.25em] uppercase">
+          PROCARDAN · EKSPRESOWA REGENERACJA WAŁÓW NAPĘDOWYCH
+        </span>
+        <span class="font-mono text-[0.7vw] font-bold text-white tracking-[0.25em] uppercase">
+          ODBIÓR I WYSYŁKA CAŁA POLSKA 24/7
         </span>
       </div>
-    </div>
 
-    <!-- ── MAIN CONTENT ── -->
-    <div style="position:absolute;top:3.5%;bottom:3.5%;left:0;right:0;display:flex;align-items:stretch;">
-
-      <!-- LEFT PANEL: Brand + Heading (55%) -->
-      <div style="flex:0 0 55%;padding:4% 4% 4% 5%;display:flex;flex-direction:column;justify-content:center;border-right:2px solid #dc2626;">
-
-        <!-- Top: brand identifier -->
-        <div style="display:flex;align-items:center;gap:2%;margin-bottom:4%;">
-          <!-- Gear icon -->
-          <svg style="width:clamp(14px,2vw,38px);height:clamp(14px,2vw,38px);flex-shrink:0;" viewBox="0 0 24 24" fill="none">
-            <circle cx="12" cy="12" r="3" fill="#dc2626"/>
-            <path d="M12 1v3M12 20v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M1 12h3M20 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12" stroke="#dc2626" stroke-width="2" stroke-linecap="round"/>
-          </svg>
+      <!-- Main Grid -->
+      <div class="flex-1 flex items-stretch px-[4%] py-[3%] gap-[4%]">
+        
+        <!-- Left Side: SVG Logo & Brand Typography (48%) -->
+        <div class="flex-1 flex flex-col justify-between border-r-2 border-slate-100 pr-[3%]">
+          
+          <!-- Logo & Top Overline -->
           <div>
-            <p style="font-family:'Share Tech Mono',monospace;font-size:clamp(8px,1.1vw,20px);color:#0f172a;letter-spacing:0.18em;text-transform:uppercase;line-height:1;">PROCARDAN</p>
-            <div style="display:flex;align-items:center;gap:4%;margin-top:2%;">
-              <div style="flex:0 0 clamp(8px,1.5vw,28px);height:1px;background:#dc2626;"></div>
-              <span style="font-family:'JetBrains Mono',monospace;font-size:clamp(5px,0.55vw,10px);color:#dc2626;letter-spacing:0.25em;text-transform:uppercase;">Wrocław · Cała Polska</span>
+            <div class="flex items-center gap-[3%] mb-[3%]">
+              <!-- Inline SVG Drive Shaft / Cardan Logo -->
+              <svg class="w-[32%] h-auto flex-shrink-0" viewBox="0 0 200 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="2" y="19" width="70" height="12" rx="3" fill="#0f172a"/>
+                <line x1="12" y1="19" x2="12" y2="31" stroke="#ffffff" stroke-width="1.5" opacity="0.4"/>
+                <line x1="24" y1="19" x2="24" y2="31" stroke="#ffffff" stroke-width="1.5" opacity="0.4"/>
+                <line x1="36" y1="19" x2="36" y2="31" stroke="#ffffff" stroke-width="1.5" opacity="0.4"/>
+                <line x1="48" y1="19" x2="48" y2="31" stroke="#ffffff" stroke-width="1.5" opacity="0.4"/>
+                <line x1="60" y1="19" x2="60" y2="31" stroke="#ffffff" stroke-width="1.5" opacity="0.4"/>
+                <path d="M68 15 L78 20 L78 30 L68 35 Z" fill="#0f172a"/>
+                <circle cx="100" cy="25" r="18" stroke="#0f172a" stroke-width="2.5" fill="#ffffff"/>
+                <rect x="87" y="21" width="26" height="8" rx="2" fill="#ef4444"/>
+                <rect x="96" y="12" width="8" height="26" rx="2" fill="#ef4444"/>
+                <circle cx="100" cy="25" r="4.5" fill="#0f172a"/>
+                <circle cx="100" cy="25" r="2" fill="#ffffff"/>
+                <path d="M132 15 L122 20 L122 30 L132 35 Z" fill="#0f172a"/>
+                <rect x="128" y="19" width="70" height="12" rx="3" fill="#0f172a"/>
+                <line x1="140" y1="19" x2="140" y2="31" stroke="#ffffff" stroke-width="1.5" opacity="0.4"/>
+                <line x1="152" y1="19" x2="152" y2="31" stroke="#ffffff" stroke-width="1.5" opacity="0.4"/>
+                <line x1="164" y1="19" x2="164" y2="31" stroke="#ffffff" stroke-width="1.5" opacity="0.4"/>
+                <line x1="176" y1="19" x2="176" y2="31" stroke="#ffffff" stroke-width="1.5" opacity="0.4"/>
+                <line x1="188" y1="19" x2="188" y2="31" stroke="#ffffff" stroke-width="1.5" opacity="0.4"/>
+              </svg>
+
+              <div>
+                <span class="font-mono text-[0.85vw] font-black text-red-600 tracking-[0.25em] uppercase">SERWIS FABRYCZNY</span>
+                <p class="font-heading text-[1.8vw] font-black text-ink tracking-wider uppercase leading-none mt-[0.1vw]">PROCARDAN</p>
+              </div>
             </div>
-          </div>
-        </div>
 
-        <!-- Main heading -->
-        <div style="margin-bottom:4%;">
-          <p style="font-family:'Inter',sans-serif;font-weight:600;color:#64748b;font-size:clamp(8px,1.1vw,20px);letter-spacing:0.05em;text-transform:uppercase;margin-bottom:1%;">
-            Profesjonalny Serwis
-          </p>
-          <h1 style="font-family:'Share Tech Mono',monospace;color:#0f172a;line-height:1.0;font-size:clamp(20px,4.6vw,86px);letter-spacing:0.02em;text-transform:uppercase;">
-            REGENERACJA<br>WAŁÓW<br><span style="color:#dc2626;">NAPĘDOWYCH</span>
-          </h1>
-        </div>
-
-        <!-- Red underline accent -->
-        <div style="width:30%;height:3px;background:#dc2626;margin-bottom:4%;"></div>
-
-        <!-- Service tags row -->
-        <div style="display:flex;flex-wrap:wrap;gap:1.5%;">
-          <span style="font-family:'JetBrains Mono',monospace;font-size:clamp(5px,0.6vw,11px);color:#475569;border:1px solid #e2e8f0;padding:0.5% 1%;letter-spacing:0.1em;">REGENERACJA</span>
-          <span style="font-family:'JetBrains Mono',monospace;font-size:clamp(5px,0.6vw,11px);color:#475569;border:1px solid #e2e8f0;padding:0.5% 1%;letter-spacing:0.1em;">WYWAŻANIE</span>
-          <span style="font-family:'JetBrains Mono',monospace;font-size:clamp(5px,0.6vw,11px);color:#475569;border:1px solid #e2e8f0;padding:0.5% 1%;letter-spacing:0.1em;">PRODUKCJA</span>
-          <span style="font-family:'JetBrains Mono',monospace;font-size:clamp(5px,0.6vw,11px);color:#475569;border:1px solid #e2e8f0;padding:0.5% 1%;letter-spacing:0.1em;">PRZEGUBY</span>
-          <span style="font-family:'JetBrains Mono',monospace;font-size:clamp(5px,0.6vw,11px);color:#475569;border:1px solid #e2e8f0;padding:0.5% 1%;letter-spacing:0.1em;">DORABIANIE</span>
-        </div>
-
-      </div>
-
-      <!-- RIGHT PANEL: Phone — hero of this banner (45%) -->
-      <div style="flex:0 0 45%;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:4%;">
-
-        <!-- "Zadzwoń" label -->
-        <div style="display:flex;align-items:center;gap:3%;margin-bottom:5%;width:100%;">
-          <div style="flex:1;height:1px;background:#dc2626;opacity:0.25;"></div>
-          <span style="font-family:'JetBrains Mono',monospace;font-weight:700;color:#dc2626;letter-spacing:0.3em;font-size:clamp(6px,0.7vw,13px);white-space:nowrap;text-transform:uppercase;">
-            Zadzwoń Teraz
-          </span>
-          <div style="flex:1;height:1px;background:#dc2626;opacity:0.25;"></div>
-        </div>
-
-        <!-- MEGA phone number — red box with corner brackets -->
-        <div style="position:relative;width:90%;margin-bottom:5%;">
-
-          <!-- Corner bracket: top-left -->
-          <div style="position:absolute;top:-4%;left:-2%;width:8%;height:25%;border-top:3px solid #dc2626;border-left:3px solid #dc2626;"></div>
-          <!-- Corner bracket: top-right -->
-          <div style="position:absolute;top:-4%;right:-2%;width:8%;height:25%;border-top:3px solid #dc2626;border-right:3px solid #dc2626;"></div>
-          <!-- Corner bracket: bottom-left -->
-          <div style="position:absolute;bottom:-4%;left:-2%;width:8%;height:25%;border-bottom:3px solid #dc2626;border-left:3px solid #dc2626;"></div>
-          <!-- Corner bracket: bottom-right -->
-          <div style="position:absolute;bottom:-4%;right:-2%;width:8%;height:25%;border-bottom:3px solid #dc2626;border-right:3px solid #dc2626;"></div>
-
-          <!-- TEL label inside box -->
-          <div style="background:#dc2626;display:inline-block;padding:1% 3%;margin-bottom:2%;">
-            <span style="font-family:'JetBrains Mono',monospace;font-weight:700;color:#ffffff;letter-spacing:0.4em;font-size:clamp(6px,0.75vw,14px);text-transform:uppercase;">TEL:</span>
+            <!-- Big Title -->
+            <h1 class="font-heading text-[3.8vw] font-black text-ink leading-[0.95] tracking-tight uppercase">
+              REGENERACJA<br/>
+              <span class="text-red-600">WAŁÓW</span><br/>
+              NAPĘDOWYCH
+            </h1>
           </div>
 
-          <!-- Phone digits — MAXIMUM SIZE -->
-          <div style="text-align:center;padding:2% 4%;">
-            <span style="font-family:'Share Tech Mono',monospace;color:#0f172a;font-size:clamp(22px,6vw,112px);letter-spacing:0.04em;line-height:1;display:block;white-space:nowrap;">
+          <!-- Quick Service Tags -->
+          <div class="flex items-center gap-[1.5%] pt-[3%] border-t border-slate-200">
+            <span class="font-mono text-[0.75vw] font-bold text-slate-700 bg-slate-100 px-[1.2%] py-[0.5%] rounded border border-slate-200 uppercase">Wyważanie</span>
+            <span class="font-mono text-[0.75vw] font-bold text-slate-700 bg-slate-100 px-[1.2%] py-[0.5%] rounded border border-slate-200 uppercase">Produkcja</span>
+            <span class="font-mono text-[0.75vw] font-bold text-slate-700 bg-slate-100 px-[1.2%] py-[0.5%] rounded border border-slate-200 uppercase">Dorabianie</span>
+            <span class="font-mono text-[0.75vw] font-bold text-slate-700 bg-slate-100 px-[1.2%] py-[0.5%] rounded border border-slate-200 uppercase">Przeguby</span>
+          </div>
+
+        </div>
+
+        <!-- Right Side: Massive Direct-Response Phone in Red Vector Frame (52%) -->
+        <div class="flex-[1.1] flex flex-col justify-between items-center pl-[2%]">
+          
+          <!-- Top Tag -->
+          <div class="w-full flex items-center justify-between">
+            <span class="font-mono text-[0.85vw] font-bold text-red-600 tracking-[0.3em] uppercase">INFOLINIA TECHNICZNA 24H</span>
+            <div class="w-[4vw] h-[0.3vw] bg-red-600"></div>
+          </div>
+
+          <!-- Prominent Red Vector Frame Box around Massive Phone -->
+          <div class="relative w-full my-auto p-[5%] bg-white border-[3px] border-red-600 rounded-sm shadow-sm flex flex-col items-center justify-center">
+            
+            <!-- Corner Accents (Technical Vector Brackets) -->
+            <div class="absolute -top-[6px] -left-[6px] w-[18px] h-[18px] border-t-4 border-l-4 border-slate-900"></div>
+            <div class="absolute -top-[6px] -right-[6px] w-[18px] h-[18px] border-t-4 border-r-4 border-slate-900"></div>
+            <div class="absolute -bottom-[6px] -left-[6px] w-[18px] h-[18px] border-b-4 border-l-4 border-slate-900"></div>
+            <div class="absolute -bottom-[6px] -right-[6px] w-[18px] h-[18px] border-b-4 border-r-4 border-slate-900"></div>
+
+            <!-- Phone Header with Red Inline SVG Phone Handset Icon -->
+            <div class="flex items-center gap-[2%] mb-[2%]">
+              <svg class="w-[2.2vw] h-[2.2vw] text-red-600 flex-shrink-0 animate-pulse" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+              </svg>
+              <span class="font-mono text-[1.1vw] font-black text-red-600 tracking-[0.3em] uppercase">ZADZWOŃ TERAZ:</span>
+            </div>
+
+            <!-- Massive Number for Passing Drivers -->
+            <p class="font-heading text-[3.6vw] font-black text-ink tracking-tight whitespace-nowrap leading-none text-center">
               +48 500 05 23 23
-            </span>
-          </div>
-        </div>
+            </p>
 
-        <!-- Address sub-line -->
-        <div style="text-align:center;border-top:1px solid #e2e8f0;padding-top:4%;width:90%;">
-          <p style="font-family:'Inter',sans-serif;font-weight:500;color:#475569;font-size:clamp(7px,0.85vw,16px);">
-            ul. Wodzisławska 1, 52-017 Wrocław
-          </p>
+          </div>
+
+          <!-- Bottom Address & Online Info -->
+          <div class="w-full flex items-center justify-between pt-[2%] border-t border-slate-200">
+            <span class="font-body text-[1vw] font-bold text-slate-800">ul. Wodzisławska 1, 52-017 Wrocław</span>
+            <span class="font-mono text-[0.9vw] font-bold text-red-600">WWW.PROCARDAN.PL</span>
+          </div>
+
         </div>
 
       </div>
-    </div><!-- /main content -->
 
-  </div><!-- /banner-face -->
+      <!-- Bottom Dark Strip -->
+      <div class="w-full h-[4%] bg-ink flex items-center px-[3%] justify-between">
+        <span class="font-mono text-[0.7vw] font-bold text-white/80 tracking-[0.2em] uppercase">
+          PROCARDAN WROCŁAW · DYNAMICZNE WYWAŻANIE DO 3200 RPM
+        </span>
+        <span class="font-mono text-[0.7vw] font-bold text-red-500 tracking-[0.2em] uppercase">
+          TOLERANCJA &lt; 0.1G · GWARANCJA
+        </span>
+      </div>
 
-  <!-- Size indicator -->
-  <div class="mt-4 flex items-center gap-3 text-xs font-mono text-slate-400">
-    <div class="w-10 h-0.5 bg-brand"></div>
-    <span>250 cm</span>
-    <span class="text-slate-300">×</span>
-    <div class="w-4 h-0.5 bg-brand/50"></div>
-    <span>100 cm</span>
-    <span class="text-slate-300 mx-1">|</span>
-    <span>Proporcja 2.5:1 · Phone-first Direct Response</span>
-  </div>
-
-  <!-- Navigation to other files -->
-  <div class="mt-8 flex gap-4">
-    <a href="wizytowka.html" class="flex items-center gap-2 border border-slate-200 hover:border-brand bg-white text-slate-600 hover:text-brand text-xs font-mono px-4 py-3 rounded-md transition-colors shadow-sm">
-      ← Wizytówka (90×50mm)
-    </a>
-    <a href="baner1.html" class="flex items-center gap-2 border border-slate-200 hover:border-brand bg-white text-slate-600 hover:text-brand text-xs font-mono px-4 py-3 rounded-md transition-colors shadow-sm">
-      ← Baner 1 (300×100cm · 3:1)
-    </a>
-  </div>
-
-  <!-- Instructions -->
-  <div class="mt-6 max-w-xl bg-white border border-slate-200 rounded-lg p-6 shadow-sm">
-    <div class="flex items-center gap-2 mb-4">
-      <div class="w-1 h-5 bg-brand rounded-full"></div>
-      <p class="text-slate-800 text-sm font-semibold">Instrukcja eksportu do PDF</p>
     </div>
-    <ol class="text-slate-600 text-sm space-y-2 list-decimal list-inside">
-      <li>Otwórz w Chrome lub Edge, kliknij <strong class="text-slate-800">Drukuj / PDF</strong></li>
-      <li>Drukarka: <strong class="text-slate-800">Zapisz jako PDF</strong></li>
-      <li>Papier: <strong class="text-slate-800">niestandardowy 250 × 100 cm</strong></li>
-      <li>Włącz: <strong class="text-slate-800">Grafika tła</strong> &nbsp;·&nbsp; Marginesy: <strong class="text-slate-800">Brak</strong></li>
-      <li>Drukarnia: <strong class="text-brand">banerflex 510g, druk UV laminat mat</strong></li>
-    </ol>
+
   </div>
 
-</div>
 </body>
 </html>
