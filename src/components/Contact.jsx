@@ -1,65 +1,84 @@
-import React from 'react';
+import React, { useState } from 'react';
+
+// ─── Status enum ─────────────────────────────────────────────────────────────
+const STATUS = { IDLE: 'idle', LOADING: 'loading', SUCCESS: 'success', ERROR: 'error' };
+
+// ─── Spinner SVG ─────────────────────────────────────────────────────────────
+function Spinner() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="18"
+      height="18"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      style={{ animation: 'spin 0.8s linear infinite', display: 'inline-block' }}
+      aria-hidden="true"
+    >
+      <path d="M21 12a9 9 0 1 1-6.22-8.56" />
+    </svg>
+  );
+}
 
 export default function Contact() {
+  const [status, setStatus]   = useState(STATUS.IDLE);
+  const [errorMsg, setErrorMsg] = useState('');
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const form = e.target;
 
-    // Get fields
-    const nameInput    = document.getElementById('name');
-    const phoneInput   = document.getElementById('phone');
-    const messageInput = document.getElementById('message');
-    const rodoInput    = document.getElementById('rodo');
+    const name     = form.name.value.trim();
+    const phone    = form.phone.value.trim();
+    const message  = form.message.value.trim();
+    const consent  = form.consent.checked;
+    const botcheck = form.botcheck?.value || '';
 
-    const submitBtn   = document.getElementById('submitBtn');
-    const successAlert = document.getElementById('successAlert');
-
-    // Front-end validation
-    if (!nameInput.value.trim() || !phoneInput.value.trim() || !messageInput.value.trim() || !rodoInput.checked) {
+    // ── Client-side validation ────────────────────────────────────────────
+    if (!name || !phone || !message || !consent) {
       alert('Proszę wypełnić wszystkie pola formularza i zaznaczyć zgodę RODO.');
       return;
     }
 
-    // Toggle button state to "Sending"
-    submitBtn.disabled = true;
-    submitBtn.innerText = 'Wysyłanie...';
+    setStatus(STATUS.LOADING);
+    setErrorMsg('');
 
     try {
-      // POST JSON to the Vercel serverless function (api/contact.js)
       const response = await fetch('/api/contact', {
-        method: 'POST',
+        method:  'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          name:     nameInput.value.trim(),
-          phone:    phoneInput.value.trim(),
-          message:  messageInput.value.trim(),
-          honeypot: document.getElementById('website')?.value || '', // bot trap
-        }),
+        body:    JSON.stringify({ name, phone, message, botcheck }),
       });
 
       const data = await response.json();
 
-      submitBtn.disabled = false;
-      submitBtn.innerText = 'Wyślij wiadomość';
-
       if (response.ok && data.success) {
-        // Success state
-        successAlert.style.display = 'flex';
-        e.target.reset();
-        setTimeout(() => { successAlert.style.display = 'none'; }, 6000);
+        setStatus(STATUS.SUCCESS);
+        form.reset();
+        // Auto-reset after 7 s so the user can submit again
+        setTimeout(() => setStatus(STATUS.IDLE), 7000);
       } else {
-        alert(data.error || 'Wystąpił błąd podczas wysyłania wiadomości. Spróbuj ponownie lub skontaktuj się telefonicznie.');
+        setStatus(STATUS.ERROR);
+        setErrorMsg(
+          data.error || 'Wystąpił błąd podczas wysyłania. Spróbuj ponownie lub skontaktuj się telefonicznie.'
+        );
       }
-    } catch (err) {
-      submitBtn.disabled = false;
-      submitBtn.innerText = 'Wyślij wiadomość';
-      alert('Błąd połączenia. Upewnij się, że masz połączenie z internetem i spróbuj ponownie.');
+    } catch {
+      setStatus(STATUS.ERROR);
+      setErrorMsg('Błąd połączenia. Upewnij się, że masz połączenie z internetem i spróbuj ponownie.');
     }
   };
+
+  const isLoading = status === STATUS.LOADING;
 
   return (
     <section id="kontakt" className="section">
       <div className="container">
-        
+
         {/* Section Header */}
         <div className="section-header">
           <span className="section-overline">Szybki kontakt</span>
@@ -71,29 +90,50 @@ export default function Contact() {
 
         {/* Contact Form & Info Grid */}
         <div className="contact-grid">
-          
+
           {/* Left Column: Form */}
           <div className="contact-card">
             <h3>Napisz do nas</h3>
-            
-            {/* Success Alert (styled green success box, hidden by default) */}
-            <div
-              id="successAlert"
-              className="form-status success"
-              style={{ display: 'none', marginBottom: '24px', alignItems: 'center', gap: '8px' }}
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                <polyline points="20 6 9 17 4 12" />
-              </svg>
-              Wiadomość została wysłana pomyślnie. Skontaktujemy się z Tobą telefonicznie!
-            </div>
 
-            <form id="contactForm" className="contact-form" onSubmit={handleSubmit}>
-              {/* Honeypot field — hidden from real users, filled by bots */}
+            {/* ── Success Banner ── */}
+            {status === STATUS.SUCCESS && (
+              <div
+                className="form-status success"
+                role="alert"
+                style={{ display: 'flex', marginBottom: '24px', alignItems: 'center', gap: '8px' }}
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                  fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+                Wiadomość została wysłana pomyślnie. Skontaktujemy się z Tobą telefonicznie!
+              </div>
+            )}
+
+            {/* ── Error Banner ── */}
+            {status === STATUS.ERROR && (
+              <div
+                className="form-status error"
+                role="alert"
+                style={{ display: 'flex', marginBottom: '24px', alignItems: 'center', gap: '8px',
+                  color: '#c53030', background: '#fff5f5', border: '1px solid #fed7d7',
+                  borderRadius: '8px', padding: '12px 16px' }}
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                  fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/>
+                  <line x1="12" y1="16" x2="12.01" y2="16"/>
+                </svg>
+                {errorMsg}
+              </div>
+            )}
+
+            <form id="contactForm" className="contact-form" onSubmit={handleSubmit} noValidate>
+
+              {/* ── Honeypot (hidden from humans, filled by bots) ── */}
               <input
                 type="text"
-                id="website"
-                name="website"
+                name="botcheck"
                 style={{ display: 'none' }}
                 tabIndex="-1"
                 autoComplete="off"
@@ -102,49 +142,53 @@ export default function Contact() {
 
               <div className="form-group-row" style={{ gridTemplateColumns: '1fr' }}>
                 <div>
-                  <label htmlFor="name" className="form-label">Imię i nazwisko *</label>
+                  <label htmlFor="contact-name" className="form-label">Imię i nazwisko *</label>
                   <input
                     type="text"
-                    id="name"
+                    id="contact-name"
                     name="name"
                     className="form-control"
                     placeholder="np. Jan Kowalski"
                     required
+                    disabled={isLoading}
                   />
                 </div>
                 <div style={{ marginTop: '15px' }}>
-                  <label htmlFor="phone" className="form-label">Numer telefonu *</label>
+                  <label htmlFor="contact-phone" className="form-label">Numer telefonu *</label>
                   <input
                     type="tel"
-                    id="phone"
+                    id="contact-phone"
                     name="phone"
                     className="form-control"
                     placeholder="np. 500-05-23-23"
                     required
+                    disabled={isLoading}
                   />
                 </div>
               </div>
 
               <div>
-                <label htmlFor="message" className="form-label">Wiadomość *</label>
+                <label htmlFor="contact-message" className="form-label">Wiadomość *</label>
                 <textarea
-                  id="message"
+                  id="contact-message"
                   name="message"
                   className="form-control"
                   placeholder="Opisz problem z wałem, podaj typ pojazdu..."
                   required
+                  disabled={isLoading}
                 />
               </div>
 
-              {/* GDPR/RODO Checkbox - unchecked by default */}
+              {/* GDPR / RODO Checkbox */}
               <div className="form-checkbox-wrapper">
-                <label className="form-checkbox-label" htmlFor="rodo">
+                <label className="form-checkbox-label" htmlFor="contact-rodo">
                   <input
                     type="checkbox"
-                    id="rodo"
+                    id="contact-rodo"
                     name="consent"
                     className="form-checkbox"
                     required
+                    disabled={isLoading}
                   />
                   <span>
                     Wyrażam zgodę na przetwarzanie moich danych osobowych w celu obsługi zapytania ofertowego, zgodnie z{' '}
@@ -155,22 +199,32 @@ export default function Contact() {
                 </label>
               </div>
 
+              {/* Submit Button — shows spinner while loading */}
               <button
                 type="submit"
                 id="submitBtn"
                 className="btn btn-primary form-submit-btn"
+                disabled={isLoading}
+                style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}
               >
-                Wyślij wiadomość
+                {isLoading ? (
+                  <>
+                    <Spinner />
+                    Wysyłanie...
+                  </>
+                ) : (
+                  'Wyślij wiadomość'
+                )}
               </button>
             </form>
           </div>
 
           {/* Right Column: Contact Details & Google Maps */}
           <div className="location-column">
-            
+
             <div className="contact-card" style={{ padding: '30px', boxShadow: 'none', border: '1px solid var(--color-border)' }}>
               <h3>Dane kontaktowe</h3>
-              
+
               <div className="contact-info-list" style={{ gap: '20px' }}>
                 {/* Phone */}
                 <div className="contact-info-item">
@@ -219,7 +273,7 @@ export default function Contact() {
               </div>
             </div>
 
-            {/* Embedded Google Map Focused on 51.080731, 17.087877 */}
+            {/* Embedded Google Map */}
             <div className="map-card" style={{ position: 'relative', minHeight: '320px', padding: 0, border: '1px solid var(--color-border)', overflow: 'hidden' }}>
               <iframe
                 title="Mapa dojazdu ProCardan"
@@ -230,8 +284,8 @@ export default function Contact() {
                 allowFullScreen=""
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-              ></iframe>
-              {/* Floating Map Branding Badge Overlay */}
+              />
+              {/* Floating Map Branding Badge */}
               <div style={{ position: 'absolute', top: '15px', left: '15px', backgroundColor: 'var(--color-white)', padding: '10px 15px', borderRadius: '6px', boxShadow: 'var(--shadow-md)', display: 'flex', alignItems: 'center', gap: '8px', border: '1px solid var(--color-border)' }}>
                 <img src="/logo_mark.png" alt="ProCardan Logo Mark" style={{ height: '24px', width: 'auto' }} />
                 <div style={{ display: 'flex', flexDirection: 'column' }}>
@@ -240,9 +294,8 @@ export default function Contact() {
                 </div>
               </div>
             </div>
-            
-          </div>
 
+          </div>
         </div>
 
       </div>
