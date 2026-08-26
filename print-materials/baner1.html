@@ -10,274 +10,229 @@
       theme: {
         extend: {
           colors: {
-            brand: '#ef4444',
-            'brand-dark': '#b91c1c',
+            brand:  '#dc2626',
+            ink:    '#0f172a',
+            muted:  '#64748b',
           },
           fontFamily: {
-            sans: ['Inter', 'system-ui', 'sans-serif'],
-            heading: ['Outfit', 'system-ui', 'sans-serif'],
-            mono: ['JetBrains Mono', 'monospace'],
+            heading: ['"Share Tech Mono"', 'monospace'],
+            body:    ['"Inter"', 'sans-serif'],
+            mono:    ['"JetBrains Mono"', 'monospace'],
           },
         },
       },
     };
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Share+Tech+Mono&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet" />
 
   <style>
-    body { background: #0a0a0f; }
+    body { background: #f1f5f9; font-family: 'Inter', sans-serif; }
 
-    /* Banner ratio: 300cm × 100cm = 3:1 landscape
-       Screen preview: fills ~92% of viewport width */
+    /* Proportional banner: 3:1 landscape */
     .banner-face {
       aspect-ratio: 3 / 1;
       width: 100%;
-      max-width: 1400px;
+      max-width: 1380px;
+      background: #ffffff;
     }
 
-    /* Repeating diagonal texture */
-    .diagonal-lines {
-      background-image: repeating-linear-gradient(
-        -45deg,
-        transparent 0px,
-        transparent 14px,
-        rgba(255,255,255,0.025) 14px,
-        rgba(255,255,255,0.025) 15px
-      );
-    }
-
-    /* Engineering grid */
-    .eng-grid {
-      background-image:
-        linear-gradient(rgba(239,68,68,0.05) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(239,68,68,0.05) 1px, transparent 1px);
-      background-size: 40px 40px;
-    }
-
-    /* Glow effect for phone number */
-    .phone-glow {
-      text-shadow:
-        0 0 40px rgba(239,68,68,0.5),
-        0 0 80px rgba(239,68,68,0.2);
-    }
-
-    /* Arrow button */
-    .arrow-btn {
-      background: #ef4444;
-      clip-path: polygon(0% 0%, 88% 0%, 100% 50%, 88% 100%, 0% 100%);
+    /* Arrow accent clipped shape */
+    .arrow-pill {
+      clip-path: polygon(0% 0%, 82% 0%, 100% 50%, 82% 100%, 0% 100%);
+      background: #dc2626;
     }
 
     @media print {
-      body { background: white !important; margin: 0; padding: 0; }
+      * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+      body { background: #ffffff !important; margin: 0; padding: 0; }
       .no-print { display: none !important; }
       .banner-face {
-        width: 300cm;
-        height: 100cm;
-        max-width: none;
-        page-break-inside: avoid;
+        width: 300cm !important;
+        height: 100cm !important;
+        max-width: none !important;
+        aspect-ratio: unset !important;
       }
-      @page {
-        size: 300cm 100cm landscape;
-        margin: 0;
-      }
+      @page { size: 300cm 100cm landscape; margin: 0; }
     }
   </style>
 </head>
+<body>
 
-<body class="font-sans min-h-screen">
-
-  <!-- ══════════════════════════════════════════════════
-       STUDIO HEADER
-  ══════════════════════════════════════════════════ -->
-  <div class="no-print border-b border-slate-800 px-10 py-5 flex items-center justify-between">
-    <div class="flex items-center gap-4">
-      <div class="w-2 h-2 rounded-full bg-brand animate-pulse"></div>
-      <span class="text-slate-400 text-sm font-mono tracking-widest uppercase">ProCardan Print Studio</span>
+<!-- ══════════════════════════════════════════════
+     TOOLBAR
+══════════════════════════════════════════════ -->
+<header class="no-print bg-white border-b border-slate-200 px-8 py-4 flex items-center justify-between sticky top-0 z-50 shadow-sm">
+  <div class="flex items-center gap-3">
+    <div class="w-6 h-6 bg-brand rounded flex items-center justify-center">
+      <span class="text-white font-mono text-xs font-bold">PC</span>
     </div>
-    <div class="flex items-center gap-6">
-      <span class="text-slate-600 text-xs font-mono">baner1.html</span>
-      <button onclick="window.print()"
-        class="flex items-center gap-2 bg-brand hover:bg-brand-dark text-white text-xs font-bold px-4 py-2 rounded transition-colors">
-        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
-        Export PDF
-      </button>
+    <span class="text-slate-800 font-semibold text-sm">ProCardan Print Studio</span>
+    <span class="text-slate-300">/</span>
+    <span class="text-slate-500 text-sm font-mono">baner1.html</span>
+  </div>
+  <div class="flex items-center gap-3">
+    <a href="wizytowka.html" class="text-slate-500 hover:text-brand text-xs font-mono px-3 py-1.5 border border-slate-200 rounded hover:border-brand transition-colors">← Wizytówka</a>
+    <a href="baner2.html"    class="text-slate-500 hover:text-brand text-xs font-mono px-3 py-1.5 border border-slate-200 rounded hover:border-brand transition-colors">Baner 2 →</a>
+    <button onclick="window.print()"
+      class="flex items-center gap-2 bg-brand hover:bg-red-700 text-white text-sm font-semibold px-5 py-2 rounded-md transition-colors shadow-sm">
+      <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+      Drukuj / PDF
+    </button>
+  </div>
+</header>
+
+<!-- ══════════════════════════════════════════════
+     PAGE HEADER
+══════════════════════════════════════════════ -->
+<div class="no-print max-w-screen-xl mx-auto px-8 pt-10 pb-4">
+  <div class="flex items-end justify-between">
+    <div>
+      <p class="text-brand text-xs font-mono tracking-widest uppercase mb-1">Projekt 02 / 03</p>
+      <h1 class="text-slate-900 text-2xl font-bold">Baner Reklamowy — Wersja 1</h1>
+      <p class="text-slate-500 text-sm mt-1">Format: 300 × 100 cm &nbsp;·&nbsp; Proporcja 3:1 &nbsp;·&nbsp; Banerflex 510g &nbsp;·&nbsp; Druk UV laminat mat</p>
+    </div>
+    <div class="text-right text-xs font-mono text-slate-400">
+      <p>Podgląd proporcjonalny</p>
+      <p>Rozdzielczość druku: 72 dpi @ 300cm</p>
     </div>
   </div>
+  <div class="mt-4 h-px bg-slate-200"></div>
+</div>
 
-  <!-- ══════════════════════════════════════════════════
-       META BAR
-  ══════════════════════════════════════════════════ -->
-  <div class="no-print max-w-screen-2xl mx-auto px-10 pt-12 pb-6">
-    <div class="flex items-end justify-between mb-2">
-      <div>
-        <p class="text-slate-600 text-xs font-mono uppercase tracking-widest mb-1">Projekt #02</p>
-        <h1 class="text-white text-3xl font-heading font-bold">Baner Reklamowy — Wersja 1</h1>
-        <p class="text-slate-400 text-sm mt-1">Format: 300 × 100 cm (3:1) · Banerflex 510g · Druk UV laminat mat</p>
-      </div>
-      <div class="text-right hidden lg:block">
-        <p class="text-slate-600 text-xs font-mono">Podgląd: proporcjonalny</p>
-        <p class="text-slate-600 text-xs font-mono">Rozdzielczość druku: 72dpi @ 300cm</p>
-      </div>
+<!-- ══════════════════════════════════════════════
+     BANNER PREVIEW
+══════════════════════════════════════════════ -->
+<div class="no-print max-w-screen-xl mx-auto px-8 py-8 pb-16">
+
+  <div class="banner-face mx-auto relative shadow-2xl border border-slate-300 rounded-sm overflow-hidden" style="box-shadow: 0 25px 60px rgba(0,0,0,0.15);">
+
+    <!-- ── TOP BORDER BAR: thick red ── -->
+    <div style="position:absolute;top:0;left:0;right:0;height:3.5%;background:#dc2626;z-index:10;display:flex;align-items:center;padding:0 2.5%;">
+      <span style="font-family:'JetBrains Mono',monospace;font-size:clamp(6px,0.65vw,12px);color:rgba(255,255,255,0.7);letter-spacing:0.3em;text-transform:uppercase;">
+        PROCARDAN · REGENERACJA WAŁÓW NAPĘDOWYCH · WROCŁAW
+      </span>
     </div>
-    <div class="h-px bg-gradient-to-r from-brand via-slate-700 to-transparent mt-4 mb-10"></div>
-  </div>
 
-  <!-- ══════════════════════════════════════════════════
-       BANNER PREVIEW
-  ══════════════════════════════════════════════════ -->
-  <div class="no-print max-w-screen-2xl mx-auto px-10 pb-20">
+    <!-- ── BOTTOM BORDER BAR ── -->
+    <div style="position:absolute;bottom:0;left:0;right:0;height:3.5%;background:#dc2626;z-index:10;display:flex;align-items:center;padding:0 2.5%;">
+      <span style="font-family:'JetBrains Mono',monospace;font-size:clamp(6px,0.65vw,12px);color:rgba(255,255,255,0.7);letter-spacing:0.3em;">
+        WWW.PROCARDAN.PL
+      </span>
+      <span style="margin-left:auto;font-family:'JetBrains Mono',monospace;font-size:clamp(6px,0.65vw,12px);color:rgba(255,255,255,0.7);letter-spacing:0.25em;">
+        DOLNY ŚLĄSK · CAŁA POLSKA · ODBIÓR 24/7
+      </span>
+    </div>
 
-    <div class="relative group">
-      <!-- Glow shadow -->
-      <div class="absolute inset-0 bg-brand/10 blur-3xl scale-95 group-hover:bg-brand/15 transition-all duration-700 rounded-xl"></div>
+    <!-- ── LEFT: Red vertical stripe ── -->
+    <div style="position:absolute;top:3.5%;left:0;width:1.2%;bottom:3.5%;background:#dc2626;z-index:5;"></div>
 
-      <!-- Banner face -->
-      <div class="banner-face relative mx-auto overflow-hidden rounded shadow-2xl shadow-black/80 border border-slate-800/50">
+    <!-- ── MAIN CONTENT AREA ── -->
+    <div style="position:absolute;top:3.5%;bottom:3.5%;left:1.2%;right:0;display:flex;align-items:stretch;">
 
-        <!-- Base: dark charcoal with engineering grid -->
-        <div class="absolute inset-0 bg-slate-950 eng-grid"></div>
+      <!-- LEFT TEXT BLOCK (65%) -->
+      <div style="flex:0 0 65%;padding:4% 5% 4% 4%;display:flex;flex-direction:column;justify-content:center;border-right:1px solid #e2e8f0;">
 
-        <!-- Diagonal texture overlay (right 40%) -->
-        <div class="absolute top-0 right-0 w-2/5 h-full diagonal-lines"></div>
+        <!-- Overline -->
+        <div style="display:flex;align-items:center;gap:1%;margin-bottom:2.5%;">
+          <div style="width:2%;height:1px;background:#dc2626;"></div>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:clamp(7px,0.8vw,15px);color:#dc2626;letter-spacing:0.35em;text-transform:uppercase;white-space:nowrap;">
+            Serwis Wałów Napędowych — Wrocław
+          </span>
+        </div>
 
-        <!-- Bold red left edge bar -->
-        <div class="absolute top-0 left-0 w-[0.8%] h-full bg-brand"></div>
+        <!-- Main Heading -->
+        <h1 style="font-family:'Share Tech Mono',monospace;color:#0f172a;line-height:1.0;letter-spacing:0.02em;text-transform:uppercase;font-size:clamp(18px,4.5vw,84px);margin-bottom:1.5%;">
+          REGENERACJA<br>
+          <span style="color:#dc2626;">WAŁÓW</span> NAPĘDOWYCH
+        </h1>
+        <h2 style="font-family:'Share Tech Mono',monospace;color:#0f172a;letter-spacing:0.2em;text-transform:uppercase;font-size:clamp(11px,2.2vw,42px);margin-bottom:3.5%;opacity:0.6;">
+          PROCARDAN
+        </h2>
 
-        <!-- Red top runner line -->
-        <div class="absolute top-[8%] left-[1.5%] right-0 h-[0.4%] bg-gradient-to-r from-brand via-brand/60 to-transparent"></div>
+        <!-- Red divider line -->
+        <div style="width:25%;height:3px;background:#dc2626;margin-bottom:3.5%;"></div>
 
-        <!-- Red bottom runner line -->
-        <div class="absolute bottom-[8%] left-[1.5%] right-0 h-[0.4%] bg-gradient-to-r from-brand via-brand/40 to-transparent"></div>
+        <!-- Address block -->
+        <div style="display:flex;align-items:center;gap:1.5%;">
+          <svg style="width:clamp(10px,1.2vw,22px);height:clamp(10px,1.2vw,22px);flex-shrink:0;" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
+          </svg>
+          <span style="font-family:'Inter',sans-serif;font-weight:500;color:#334155;font-size:clamp(9px,1.1vw,20px);">
+            ul. Wodzisławska 1, 52-017 Wrocław
+          </span>
+        </div>
 
-        <!-- Large decorative circle (engineering schematic feel) -->
-        <div class="absolute right-[4%] top-1/2 -translate-y-1/2 w-[28%] aspect-square rounded-full border border-brand/15 flex items-center justify-center">
-          <div class="w-[80%] aspect-square rounded-full border border-brand/10 flex items-center justify-center">
-            <div class="w-[60%] aspect-square rounded-full border border-brand/20 flex items-center justify-center">
-              <div class="w-[40%] aspect-square rounded-full bg-brand/5 border border-brand/30"></div>
-            </div>
+      </div>
+
+      <!-- RIGHT PHONE BLOCK (35%) -->
+      <div style="flex:0 0 35%;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:4%;">
+
+        <!-- TEL label -->
+        <div style="display:flex;align-items:center;gap:4%;margin-bottom:4%;width:100%;">
+          <div style="flex:1;height:1px;background:#dc2626;opacity:0.3;"></div>
+          <span style="font-family:'JetBrains Mono',monospace;font-weight:700;color:#dc2626;letter-spacing:0.35em;text-transform:uppercase;font-size:clamp(7px,0.75vw,14px);white-space:nowrap;">
+            ZADZWOŃ TERAZ
+          </span>
+          <div style="flex:1;height:1px;background:#dc2626;opacity:0.3;"></div>
+        </div>
+
+        <!-- Phone CTA block with arrow -->
+        <div style="display:flex;align-items:center;gap:0;width:100%;">
+          <!-- Phone box -->
+          <div style="flex:1;border:2px solid #dc2626;padding:4% 5%;background:#fff;">
+            <p style="font-family:'JetBrains Mono',monospace;font-size:clamp(5px,0.6vw,11px);color:#dc2626;letter-spacing:0.35em;text-transform:uppercase;margin-bottom:4%;">TEL:</p>
+            <p style="font-family:'Share Tech Mono',monospace;color:#0f172a;letter-spacing:0.04em;font-size:clamp(14px,3vw,56px);line-height:1;white-space:nowrap;">
+              +48 500 05 23 23
+            </p>
           </div>
-          <!-- Spoke lines -->
-          <div class="absolute inset-0 flex items-center justify-center">
-            <div class="w-full h-[1px] bg-brand/10"></div>
-          </div>
-          <div class="absolute inset-0 flex items-center justify-center rotate-60">
-            <div class="w-full h-[1px] bg-brand/10"></div>
-          </div>
-          <div class="absolute inset-0 flex items-center justify-center rotate-120">
-            <div class="w-full h-[1px] bg-brand/10"></div>
+          <!-- Arrow chevron -->
+          <div class="arrow-pill" style="width:12%;height:60%;min-height:40px;display:flex;align-items:center;justify-content:center;">
+            <svg style="width:clamp(10px,1.8vw,34px);height:clamp(10px,1.8vw,34px);" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"/>
+              <polyline points="12 5 19 12 12 19"/>
+            </svg>
           </div>
         </div>
 
-        <!-- ── MAIN CONTENT ── -->
-        <div class="absolute inset-0 flex flex-col justify-center pl-[3.5%] pr-[32%]">
-
-          <!-- Overline -->
-          <div class="flex items-center gap-3 mb-[2%]">
-            <div class="flex gap-1">
-              <div class="w-6 h-[2px] bg-brand"></div>
-              <div class="w-3 h-[2px] bg-brand/50"></div>
-              <div class="w-2 h-[2px] bg-brand/25"></div>
-            </div>
-            <span class="text-brand font-mono font-bold text-[1.1vw] tracking-[0.3em] uppercase">
-              Serwis Wałów Napędowych
-            </span>
-          </div>
-
-          <!-- Main heading -->
-          <h1 class="font-heading font-black text-white leading-[1.05] mb-[3%]" style="font-size: clamp(24px, 4.8vw, 88px); letter-spacing: -0.01em;">
-            REGENERACJA<br/>
-            <span class="text-brand">WAŁÓW</span>&#32;<span style="color: #f8fafc;">NAPĘDOWYCH</span><br/>
-            <span class="text-slate-300" style="font-size: clamp(16px, 3vw, 56px); font-weight: 700; letter-spacing: 0.15em;">
-              PROCARDAN
-            </span>
-          </h1>
-
-          <!-- Divider -->
-          <div class="w-[20%] h-[3px] bg-gradient-to-r from-brand to-transparent mb-[3%]"></div>
-
-          <!-- Contact row -->
-          <div class="flex items-stretch gap-[2%]">
-
-            <!-- Phone with arrow -->
-            <div class="flex items-center gap-0">
-              <div class="bg-slate-800/80 border border-slate-700/50 px-[2%] py-[1.2%] flex flex-col justify-center">
-                <span class="text-brand font-mono font-bold text-[0.9vw] tracking-[0.25em] mb-1">TEL</span>
-                <span class="text-white font-heading font-black phone-glow" style="font-size: clamp(14px, 2.8vw, 52px); letter-spacing: 0.04em;">
-                  +48 500 05 23 23
-                </span>
-              </div>
-              <!-- Arrow button -->
-              <div class="arrow-btn h-full min-h-[60px] flex items-center justify-center px-[1.5%]">
-                <svg class="text-white" style="width: clamp(20px, 2.5vw, 48px); height: clamp(20px, 2.5vw, 48px);"
-                  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                  <line x1="5" y1="12" x2="19" y2="12"/>
-                  <polyline points="12 5 19 12 12 19"/>
-                </svg>
-              </div>
-            </div>
-
-            <!-- Address block -->
-            <div class="flex flex-col justify-center border-l border-slate-700/50 pl-[2%]">
-              <span class="text-slate-400 font-mono text-[0.75vw] tracking-widest uppercase mb-1">Adres serwisu</span>
-              <span class="text-white font-heading font-semibold" style="font-size: clamp(11px, 1.4vw, 26px);">
-                ul. Wodzisławska 1
-              </span>
-              <span class="text-slate-300" style="font-size: clamp(10px, 1.2vw, 22px);">
-                52-017 Wrocław
-              </span>
-            </div>
-
-          </div>
-
-          <!-- Bottom: WWW -->
-          <div class="mt-[2.5%] flex items-center gap-3">
-            <div class="w-2 h-2 rounded-full bg-brand animate-pulse"></div>
-            <span class="text-slate-400 font-mono text-[0.9vw] tracking-[0.2em] uppercase">www.procardan.pl</span>
-          </div>
-
-        </div>
-
-        <!-- Corner brand stamp (bottom-right) -->
-        <div class="absolute bottom-[4%] right-[2%]">
-          <div class="border border-slate-700/40 px-3 py-1.5 text-center">
-            <p class="text-slate-600 font-mono text-[0.55vw] tracking-widest uppercase">Cała Polska · 24/7</p>
-          </div>
+        <!-- Sub-contact -->
+        <div style="margin-top:5%;width:100%;text-align:center;border-top:1px solid #e2e8f0;padding-top:4%;">
+          <p style="font-family:'JetBrains Mono',monospace;font-size:clamp(6px,0.65vw,12px);color:#64748b;letter-spacing:0.2em;text-transform:uppercase;">
+            procardan1@gmail.com
+          </p>
         </div>
 
       </div>
     </div>
 
-    <!-- Size badge -->
-    <div class="mt-4 flex items-center gap-4">
-      <div class="flex items-center gap-2">
-        <div class="w-8 h-[2px] bg-brand"></div>
-        <span class="text-slate-500 text-xs font-mono">300cm</span>
-      </div>
-      <span class="text-slate-700 text-xs font-mono">×</span>
-      <div class="flex items-center gap-2">
-        <div class="w-3 h-[2px] bg-brand/50"></div>
-        <span class="text-slate-500 text-xs font-mono">100cm</span>
-      </div>
-      <span class="text-slate-700 text-xs font-mono mx-2">|</span>
-      <span class="text-slate-600 text-xs font-mono">Proporcja 3:1</span>
-    </div>
+  </div><!-- /banner-face -->
 
-    <!-- Instructions -->
-    <div class="mt-10 p-6 border border-slate-800 rounded-lg bg-slate-950/50 max-w-2xl">
-      <p class="text-slate-400 text-xs font-mono uppercase tracking-widest mb-3 flex items-center gap-2">
-        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/></svg>
-        Instrukcja eksportu
-      </p>
-      <ol class="text-slate-400 text-xs space-y-2 list-decimal list-inside font-mono">
-        <li>Otwórz plik w przeglądarce Chrome lub Edge</li>
-        <li>Naciśnij <span class="text-white">Ctrl+P</span> → Drukarka: <span class="text-white">Zapisz jako PDF</span></li>
-        <li>Papier: <span class="text-white">niestandardowy 300 × 100 cm</span> lub A0 poziomo</li>
-        <li>Włącz: <span class="text-white">Grafika tła</span> · Marginesy: <span class="text-white">Brak</span></li>
-        <li>Przekaż do drukarni z oznaczeniem: <span class="text-brand">banerflex 510g, druk UV</span></li>
-      </ol>
-    </div>
+  <!-- Size indicator -->
+  <div class="mt-4 flex items-center gap-3 text-xs font-mono text-slate-400">
+    <div class="w-10 h-0.5 bg-brand"></div>
+    <span>300 cm</span>
+    <span class="text-slate-300">×</span>
+    <div class="w-4 h-0.5 bg-brand/50"></div>
+    <span>100 cm</span>
+    <span class="text-slate-300 mx-1">|</span>
+    <span>Proporcja 3:1 · Banerflex 510g</span>
   </div>
 
+  <!-- Instructions -->
+  <div class="mt-10 max-w-xl bg-white border border-slate-200 rounded-lg p-6 shadow-sm">
+    <div class="flex items-center gap-2 mb-4">
+      <div class="w-1 h-5 bg-brand rounded-full"></div>
+      <p class="text-slate-800 text-sm font-semibold">Instrukcja eksportu do PDF</p>
+    </div>
+    <ol class="text-slate-600 text-sm space-y-2 list-decimal list-inside">
+      <li>Otwórz w Chrome lub Edge, kliknij <strong class="text-slate-800">Drukuj / PDF</strong></li>
+      <li>Drukarka: <strong class="text-slate-800">Zapisz jako PDF</strong></li>
+      <li>Papier: <strong class="text-slate-800">niestandardowy 300 × 100 cm</strong></li>
+      <li>Włącz: <strong class="text-slate-800">Grafika tła</strong> &nbsp;·&nbsp; Marginesy: <strong class="text-slate-800">Brak</strong></li>
+      <li>Drukarnia: <strong class="text-brand">banerflex 510g, druk UV laminat mat</strong></li>
+    </ol>
+  </div>
+
+</div>
 </body>
 </html>
