@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Baner 2 — ProCardan | Print Preview</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: '#ef4444',
+            'brand-dark': '#b91c1c',
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            heading: ['Outfit', 'system-ui', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+        },
+      },
+    };
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+
+  <style>
+    body { background: #0a0a0f; }
+
+    /* Banner: 2:1 ratio — direct-response layout, phone-first */
+    .banner-face {
+      aspect-ratio: 2.5 / 1;
+      width: 100%;
+      max-width: 1400px;
+    }
+
+    /* Subtle cross-hatch engineering texture */
+    .crosshatch {
+      background-image:
+        repeating-linear-gradient(
+          0deg,
+          transparent,
+          transparent 19px,
+          rgba(239,68,68,0.04) 19px,
+          rgba(239,68,68,0.04) 20px
+        ),
+        repeating-linear-gradient(
+          90deg,
+          transparent,
+          transparent 19px,
+          rgba(239,68,68,0.04) 19px,
+          rgba(239,68,68,0.04) 20px
+        );
+    }
+
+    /* Strong phone glow */
+    .mega-glow {
+      text-shadow:
+        0 0 60px rgba(239,68,68,0.7),
+        0 0 120px rgba(239,68,68,0.35),
+        0 0 200px rgba(239,68,68,0.15);
+    }
+
+    /* Scanning line animation (subtle tech feel) */
+    @keyframes scanline {
+      0%   { transform: translateY(-100%); opacity: 0; }
+      10%  { opacity: 1; }
+      90%  { opacity: 1; }
+      100% { transform: translateY(2000%); opacity: 0; }
+    }
+    .scanline {
+      animation: scanline 6s ease-in-out infinite;
+    }
+
+    /* Ruler tick marks */
+    .ruler-ticks {
+      background-image: repeating-linear-gradient(
+        90deg,
+        rgba(239,68,68,0.4) 0px,
+        rgba(239,68,68,0.4) 1px,
+        transparent 1px,
+        transparent 40px
+      );
+    }
+
+    @media print {
+      body { background: white !important; margin: 0; padding: 0; }
+      .no-print { display: none !important; }
+      .banner-face {
+        width: 250cm;
+        height: 100cm;
+        max-width: none;
+        page-break-inside: avoid;
+      }
+      @page {
+        size: 250cm 100cm landscape;
+        margin: 0;
+      }
+    }
+  </style>
+</head>
+
+<body class="font-sans min-h-screen">
+
+  <!-- ══════════════════════════════════════════════════
+       STUDIO HEADER
+  ══════════════════════════════════════════════════ -->
+  <div class="no-print border-b border-slate-800 px-10 py-5 flex items-center justify-between">
+    <div class="flex items-center gap-4">
+      <div class="w-2 h-2 rounded-full bg-brand animate-pulse"></div>
+      <span class="text-slate-400 text-sm font-mono tracking-widest uppercase">ProCardan Print Studio</span>
+    </div>
+    <div class="flex items-center gap-6">
+      <span class="text-slate-600 text-xs font-mono">baner2.html</span>
+      <button onclick="window.print()"
+        class="flex items-center gap-2 bg-brand hover:bg-brand-dark text-white text-xs font-bold px-4 py-2 rounded transition-colors">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+        Export PDF
+      </button>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════
+       META BAR
+  ══════════════════════════════════════════════════ -->
+  <div class="no-print max-w-screen-2xl mx-auto px-10 pt-12 pb-6">
+    <div class="flex items-end justify-between mb-2">
+      <div>
+        <p class="text-slate-600 text-xs font-mono uppercase tracking-widest mb-1">Projekt #03</p>
+        <h1 class="text-white text-3xl font-heading font-bold">Baner Reklamowy — Wersja 2</h1>
+        <p class="text-slate-400 text-sm mt-1">Format: 250 × 100 cm (2.5:1) · Minimalistyczny · Kontakt bezpośredni</p>
+      </div>
+      <div class="text-right hidden lg:block">
+        <p class="text-slate-600 text-xs font-mono">Podgląd: proporcjonalny</p>
+        <p class="text-slate-600 text-xs font-mono">Wariant: Phone-first Direct Response</p>
+      </div>
+    </div>
+    <div class="h-px bg-gradient-to-r from-brand via-slate-700 to-transparent mt-4 mb-10"></div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════
+       BANNER 2 PREVIEW
+  ══════════════════════════════════════════════════ -->
+  <div class="no-print max-w-screen-2xl mx-auto px-10 pb-20">
+
+    <div class="relative group">
+      <div class="absolute inset-0 bg-brand/8 blur-3xl scale-95 group-hover:bg-brand/12 transition-all duration-700 rounded-xl"></div>
+
+      <div class="banner-face relative mx-auto overflow-hidden rounded shadow-2xl shadow-black/80 border border-slate-800/40">
+
+        <!-- ── BASE LAYER ── -->
+        <div class="absolute inset-0 bg-slate-950 crosshatch"></div>
+
+        <!-- ── ENGINEERING ACCENT LINES ── -->
+
+        <!-- Top precision ruler strip -->
+        <div class="absolute top-0 left-0 right-0 h-[5%] flex flex-col justify-end">
+          <div class="w-full h-[1px] bg-brand/30"></div>
+          <div class="ruler-ticks w-full h-[3%] opacity-60 mt-1"></div>
+        </div>
+
+        <!-- Bottom precision ruler strip -->
+        <div class="absolute bottom-0 left-0 right-0 h-[5%] flex flex-col justify-start">
+          <div class="ruler-ticks w-full h-[3%] opacity-60 mb-1"></div>
+          <div class="w-full h-[1px] bg-brand/30"></div>
+        </div>
+
+        <!-- Left red vertical solid bar (3%) -->
+        <div class="absolute top-[5%] left-0 w-[2.5%] h-[90%] bg-brand flex flex-col items-center justify-between py-[3%]">
+          <div class="w-[1px] flex-1 bg-white/20"></div>
+          <div class="w-4 h-4 rounded-full bg-white/10 border border-white/20 my-2 flex-shrink-0"></div>
+          <div class="w-[1px] flex-1 bg-white/20"></div>
+        </div>
+
+        <!-- Right vertical line accent -->
+        <div class="absolute top-[5%] right-[5%] w-[1px] h-[90%] bg-brand/20"></div>
+
+        <!-- Horizontal center accent line (thin red) -->
+        <div class="absolute top-1/2 left-[2.5%] right-[5%] h-[1px] bg-brand/10 -translate-y-[200%]"></div>
+        <div class="absolute top-1/2 left-[2.5%] right-[5%] h-[1px] bg-brand/10 translate-y-[200%]"></div>
+
+        <!-- Scanning line overlay (animated, subtle) -->
+        <div class="scanline absolute left-0 right-0 h-[0.3%] bg-gradient-to-b from-transparent via-brand/10 to-transparent pointer-events-none"></div>
+
+        <!-- ── MAIN CONTENT ── -->
+        <div class="absolute inset-0 top-[5%] bottom-[5%] left-[3.5%] right-[5.5%] flex flex-col justify-center">
+
+          <!-- Layout: Left text + Right phone block -->
+          <div class="flex items-center justify-between h-full">
+
+            <!-- LEFT: Brand + Heading -->
+            <div class="flex flex-col justify-center flex-1 pr-[4%]">
+
+              <!-- Brand mark + overline -->
+              <div class="flex items-center gap-[1.5%] mb-[3%]">
+                <div class="w-[1.5%] h-[1px] bg-brand"></div>
+                <span class="text-brand font-mono font-bold tracking-[0.4em] uppercase"
+                  style="font-size: clamp(8px, 0.85vw, 16px);">
+                  Profesjonalny Serwis
+                </span>
+              </div>
+
+              <!-- Main Title -->
+              <div class="mb-[3%]">
+                <p class="text-slate-300 font-heading font-bold tracking-[0.05em] uppercase leading-none"
+                  style="font-size: clamp(12px, 2vw, 36px);">
+                  Regeneracja Wałów
+                </p>
+                <p class="text-white font-heading font-black tracking-tight leading-none"
+                  style="font-size: clamp(18px, 3.8vw, 72px); letter-spacing: -0.02em;">
+                  NAPĘDOWYCH
+                </p>
+                <!-- Brand name below with thick underline -->
+                <div class="relative mt-[1%]">
+                  <p class="text-brand font-heading font-black tracking-[0.2em] uppercase leading-none"
+                    style="font-size: clamp(14px, 2.6vw, 50px);">
+                    PROCARDAN
+                  </p>
+                  <div class="absolute -bottom-[8%] left-0 w-full h-[3px] bg-gradient-to-r from-brand via-brand/60 to-transparent"></div>
+                </div>
+              </div>
+
+              <!-- Services tags -->
+              <div class="flex flex-wrap gap-[1%] mt-[4%]">
+                <span class="border border-slate-700/60 text-slate-400 font-mono px-[1.2%] py-[0.4%] rounded-sm" style="font-size: clamp(7px, 0.7vw, 13px); letter-spacing: 0.1em;">Regeneracja</span>
+                <span class="border border-slate-700/60 text-slate-400 font-mono px-[1.2%] py-[0.4%] rounded-sm" style="font-size: clamp(7px, 0.7vw, 13px); letter-spacing: 0.1em;">Wyważanie</span>
+                <span class="border border-slate-700/60 text-slate-400 font-mono px-[1.2%] py-[0.4%] rounded-sm" style="font-size: clamp(7px, 0.7vw, 13px); letter-spacing: 0.1em;">Produkcja</span>
+                <span class="border border-slate-700/60 text-slate-400 font-mono px-[1.2%] py-[0.4%] rounded-sm" style="font-size: clamp(7px, 0.7vw, 13px); letter-spacing: 0.1em;">Przeguby</span>
+                <span class="border border-slate-700/60 text-slate-400 font-mono px-[1.2%] py-[0.4%] rounded-sm" style="font-size: clamp(7px, 0.7vw, 13px); letter-spacing: 0.1em;">Dorabianie</span>
+              </div>
+
+            </div>
+
+            <!-- VERTICAL DIVIDER -->
+            <div class="h-[70%] w-[1px] bg-gradient-to-b from-transparent via-slate-600 to-transparent flex-shrink-0 mx-[2%]"></div>
+
+            <!-- RIGHT: Phone block — the hero of this banner -->
+            <div class="flex flex-col items-center justify-center flex-shrink-0 w-[42%]">
+
+              <!-- TEL label with engineering frame -->
+              <div class="flex items-center gap-3 mb-[3%]">
+                <div class="h-[1px] bg-brand/50 w-8"></div>
+                <span class="text-brand font-mono font-bold tracking-[0.4em] uppercase"
+                  style="font-size: clamp(8px, 0.9vw, 18px);">
+                  Zadzwoń Teraz
+                </span>
+                <div class="h-[1px] bg-brand/50 w-8"></div>
+              </div>
+
+              <!-- Phone number — MEGA SIZE, the undeniable CTA -->
+              <div class="relative">
+                <!-- Corner frame decorators -->
+                <div class="absolute -top-[10%] -left-[3%] w-[8%] h-[40%] border-t-2 border-l-2 border-brand/60"></div>
+                <div class="absolute -top-[10%] -right-[3%] w-[8%] h-[40%] border-t-2 border-r-2 border-brand/60"></div>
+                <div class="absolute -bottom-[10%] -left-[3%] w-[8%] h-[40%] border-b-2 border-l-2 border-brand/60"></div>
+                <div class="absolute -bottom-[10%] -right-[3%] w-[8%] h-[40%] border-b-2 border-r-2 border-brand/60"></div>
+
+                <p class="text-brand font-heading font-black text-center mega-glow px-[4%]"
+                  style="font-size: clamp(22px, 5.5vw, 100px); letter-spacing: 0.04em; line-height: 1;">
+                  +48
+                </p>
+                <p class="text-white font-heading font-black text-center mega-glow"
+                  style="font-size: clamp(24px, 6.5vw, 120px); letter-spacing: 0.05em; line-height: 1;">
+                  500 05 23 23
+                </p>
+              </div>
+
+              <!-- Subtext -->
+              <div class="mt-[5%] flex flex-col items-center gap-[1.5%]">
+                <div class="w-full h-[1px] bg-gradient-to-r from-transparent via-brand/40 to-transparent"></div>
+                <p class="text-slate-400 font-mono text-center"
+                  style="font-size: clamp(7px, 0.75vw, 14px); letter-spacing: 0.2em;">
+                  ul. Wodzisławska 1 · 52-017 Wrocław
+                </p>
+                <p class="text-slate-500 font-mono text-center"
+                  style="font-size: clamp(6px, 0.65vw, 12px); letter-spacing: 0.2em;">
+                  WWW.PROCARDAN.PL · Odbiór z całej Polski 24/7
+                </p>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div><!-- /main content -->
+
+        <!-- Corner watermark stamp -->
+        <div class="absolute bottom-[6%] left-[3.5%] opacity-30">
+          <div class="border border-slate-700 px-2 py-1">
+            <p class="text-slate-500 font-mono" style="font-size: clamp(5px, 0.5vw, 9px); letter-spacing: 0.2em;">PROCARDAN · WROCŁAW</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Size badge -->
+    <div class="mt-4 flex items-center gap-4">
+      <div class="flex items-center gap-2">
+        <div class="w-8 h-[2px] bg-brand"></div>
+        <span class="text-slate-500 text-xs font-mono">250cm</span>
+      </div>
+      <span class="text-slate-700 text-xs font-mono">×</span>
+      <div class="flex items-center gap-2">
+        <div class="w-3 h-[2px] bg-brand/50"></div>
+        <span class="text-slate-500 text-xs font-mono">100cm</span>
+      </div>
+      <span class="text-slate-700 text-xs font-mono mx-2">|</span>
+      <span class="text-slate-600 text-xs font-mono">Proporcja 2.5:1 · Phone-first Layout</span>
+    </div>
+
+    <!-- Two banner comparison note -->
+    <div class="mt-10 flex gap-4">
+      <a href="baner1.html"
+        class="flex items-center gap-2 border border-slate-700 hover:border-brand text-slate-400 hover:text-brand text-xs font-mono px-4 py-2.5 rounded transition-colors">
+        ← Baner 1 (3:1 · Adres + Telefon)
+      </a>
+      <a href="wizytowka.html"
+        class="flex items-center gap-2 border border-slate-700 hover:border-brand text-slate-400 hover:text-brand text-xs font-mono px-4 py-2.5 rounded transition-colors">
+        ← Wizytówka (90×50mm · Dwustronna)
+      </a>
+    </div>
+
+    <!-- Instructions -->
+    <div class="mt-6 p-6 border border-slate-800 rounded-lg bg-slate-950/50 max-w-2xl">
+      <p class="text-slate-400 text-xs font-mono uppercase tracking-widest mb-3 flex items-center gap-2">
+        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/></svg>
+        Instrukcja eksportu
+      </p>
+      <ol class="text-slate-400 text-xs space-y-2 list-decimal list-inside font-mono">
+        <li>Otwórz plik w Chrome lub Edge</li>
+        <li><span class="text-white">Ctrl+P</span> → Drukarka: <span class="text-white">Zapisz jako PDF</span></li>
+        <li>Papier: <span class="text-white">niestandardowy 250 × 100 cm</span></li>
+        <li>Włącz: <span class="text-white">Grafika tła</span> · Marginesy: <span class="text-white">Brak</span></li>
+        <li>Drukarnia: <span class="text-brand">banerflex 510g, druk UV laminat mat</span></li>
+      </ol>
+    </div>
+  </div>
+
+</body>
+</html>
