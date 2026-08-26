@@ -25,14 +25,14 @@
     .banner-container {
       width: 100%;
       max-width: 1360px;
-      aspect-ratio: 2.5 / 1;
+      aspect-ratio: 3 / 1;
       background: #ffffff;
       position: relative;
       overflow: hidden;
       break-inside: avoid;
       page-break-inside: avoid;
       container-type: inline-size;
-      padding: 3cqw 4cqw;
+      padding: 2.2cqw 3.5cqw;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -83,47 +83,40 @@
   <!-- ── Print Wrapper ── -->
   <div class="print-wrapper w-full max-w-7xl px-4 flex justify-center items-center">
 
-    <!-- ════════════════ BANNER 2 (2.5:1 Phone Focus) ════════════════ -->
+    <!-- ════════════════ BANNER 2 (3:1 Landscape Phone Focus) ════════════════ -->
     <div class="banner-container shadow-2xl rounded-sm border border-slate-200">
       
-      <!-- Top Row: Real Logo & Heading -->
+      <!-- Top Row: Exact Same Coordinate & Proportions as Banner 1 -->
       <div class="flex items-center justify-between">
         <div class="flex items-center" style="gap: 1.2cqw;">
-          <img src="../public/logo_mark.png" alt="ProCardan Logo" style="height: 3.5cqw; width: auto;" />
-          <span style="font-size: 2.8cqw;" class="font-black text-slate-900 tracking-tight leading-none">
+          <img src="../public/logo_mark.png" alt="ProCardan Logo" style="height: 2.6cqw; width: auto;" />
+          <span style="font-size: 2.1cqw;" class="font-black text-slate-900 tracking-tight leading-none">
             Pro<span class="text-red-500">Cardan</span>
           </span>
         </div>
-        <span style="font-size: 1cqw;" class="font-bold text-slate-400 uppercase tracking-widest">
+        <span style="font-size: 0.85cqw;" class="font-bold text-slate-400 uppercase tracking-widest">
           Serwis Wałów Napędowych
         </span>
       </div>
 
-      <!-- Center: Massive Corporate Heading -->
-      <div class="my-auto" style="padding: 0.5cqw 0;">
-        <h1 style="font-size: 3.6cqw; line-height: 1.05;" class="font-black text-slate-900 uppercase tracking-tight">
+      <!-- Center: Exact Same Headline Placement as Banner 1 -->
+      <div class="my-auto">
+        <h1 style="font-size: 2.9cqw; line-height: 1.05;" class="font-black text-slate-900 uppercase tracking-tight">
           REGENERACJA WAŁÓW NAPĘDOWYCH
         </h1>
       </div>
 
-      <!-- Direct Contact Hero: Massive Phone Number (Clean, High-Contrast) -->
-      <div class="my-auto" style="padding: 0.5cqw 0;">
-        <span style="font-size: 1.1cqw;" class="font-extrabold text-red-500 block uppercase tracking-wider mb-[0.2cqw]">
-          TEL:
-        </span>
-        <p style="font-size: 4.8cqw;" class="font-black text-slate-900 tracking-tight whitespace-nowrap leading-none">
-          +48 500 05 23 23
-        </p>
-      </div>
+      <!-- Bottom Row: Address & Bold High-Contrast Phone Number -->
+      <div class="border-t border-slate-200 flex items-center justify-between" style="padding-top: 1.2cqw;">
+        <div>
+          <span style="font-size: 0.7cqw;" class="font-semibold text-slate-400 block uppercase tracking-wider">Lokalizacja:</span>
+          <p style="font-size: 1.15cqw;" class="font-bold text-slate-800">ul. Wodzisławska 1, 52-017 Wrocław</p>
+        </div>
 
-      <!-- Bottom Row: Address & Web -->
-      <div class="border-t border-slate-200 flex items-center justify-between" style="padding-top: 1.5cqw;">
-        <p style="font-size: 1.2cqw;" class="font-medium text-slate-600">
-          ul. Wodzisławska 1, 52-017 Wrocław
-        </p>
-        <p style="font-size: 1.2cqw;" class="font-semibold text-slate-900 tracking-wide">
-          WWW.PROCARDAN.PL
-        </p>
+        <div class="text-right">
+          <span style="font-size: 0.7cqw;" class="font-bold text-red-500 block uppercase tracking-wider">TEL:</span>
+          <p style="font-size: 2.1cqw;" class="font-black text-slate-900 whitespace-nowrap leading-none">+48 500 05 23 23</p>
+        </div>
       </div>
 
     </div>
