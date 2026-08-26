@@ -12,10 +12,18 @@ export default function CookieBanner() {
 
   // Dynamic script loader for cookie compliance
   const handleScriptInjection = (prefs) => {
-    // 1. Analytical Scripts (Google Analytics)
+    // =========================================================
+    // TODO: Replace placeholder IDs before enabling analytics!
+    //   - Google Analytics: replace 'G-XXXXXXXXXX' with your real GA4 Measurement ID
+    //   - Meta Pixel:       replace 'XXXXXXXXXXXXXXX' with your real Pixel ID
+    // Both blocks are commented out below until real keys are provided.
+    // =========================================================
+
+    // --- 1. Analytical Scripts (Google Analytics) ---
+    // DISABLED: Placeholder GA ID (G-XXXXXXXXXX). Uncomment after adding real ID.
+    /*
     if (prefs.analytical) {
       if (!document.getElementById('google-analytics-script')) {
-        console.log('Cookie Consent: Injecting Google Analytics...');
         const gaScript = document.createElement('script');
         gaScript.async = true;
         gaScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX';
@@ -33,18 +41,25 @@ export default function CookieBanner() {
         document.head.appendChild(gaInitScript);
       }
     } else {
-      // Revoke consent: clean up scripts
       const gaScript = document.getElementById('google-analytics-script');
       const gaInitScript = document.getElementById('google-analytics-init');
       if (gaScript) gaScript.remove();
       if (gaInitScript) gaInitScript.remove();
-      console.log('Cookie Consent: Google Analytics scripts removed.');
+    }
+    */
+    // Cleanup any previously injected GA scripts (safety net)
+    if (!prefs.analytical) {
+      const gaScript = document.getElementById('google-analytics-script');
+      const gaInitScript = document.getElementById('google-analytics-init');
+      if (gaScript) gaScript.remove();
+      if (gaInitScript) gaInitScript.remove();
     }
 
-    // 2. Marketing Scripts (Meta Pixel)
+    // --- 2. Marketing Scripts (Meta Pixel) ---
+    // DISABLED: Placeholder Pixel ID (XXXXXXXXXXXXXXX). Uncomment after adding real ID.
+    /*
     if (prefs.marketing) {
       if (!document.getElementById('meta-pixel-script')) {
-        console.log('Cookie Consent: Injecting Meta Pixel...');
         const pixelScript = document.createElement('script');
         pixelScript.id = 'meta-pixel-script';
         pixelScript.innerHTML = `
@@ -62,10 +77,14 @@ export default function CookieBanner() {
         document.head.appendChild(pixelScript);
       }
     } else {
-      // Revoke consent: clean up scripts
       const pixelScript = document.getElementById('meta-pixel-script');
       if (pixelScript) pixelScript.remove();
-      console.log('Cookie Consent: Meta Pixel scripts removed.');
+    }
+    */
+    // Cleanup any previously injected Pixel scripts (safety net)
+    if (!prefs.marketing) {
+      const pixelScript = document.getElementById('meta-pixel-script');
+      if (pixelScript) pixelScript.remove();
     }
   };
 

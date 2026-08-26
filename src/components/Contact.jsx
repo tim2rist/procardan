@@ -1,67 +1,59 @@
 import React from 'react';
 
 export default function Contact() {
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     // Get fields
-    const nameInput = document.getElementById('name');
-    const phoneInput = document.getElementById('phone');
+    const nameInput    = document.getElementById('name');
+    const phoneInput   = document.getElementById('phone');
     const messageInput = document.getElementById('message');
-    const rodoInput = document.getElementById('rodo');
-    
-    const submitBtn = document.getElementById('submitBtn');
+    const rodoInput    = document.getElementById('rodo');
+
+    const submitBtn   = document.getElementById('submitBtn');
     const successAlert = document.getElementById('successAlert');
-    
-    // Front-end validations
+
+    // Front-end validation
     if (!nameInput.value.trim() || !phoneInput.value.trim() || !messageInput.value.trim() || !rodoInput.checked) {
       alert('Proszę wypełnić wszystkie pola formularza i zaznaczyć zgodę RODO.');
       return;
     }
 
-    // Toggle button state to Sending
+    // Toggle button state to "Sending"
     submitBtn.disabled = true;
     submitBtn.innerText = 'Wysyłanie...';
-    
-    // Build form data
-    const formData = new FormData(e.target);
-    
-    // Asynchronous send (AJAX Fetch)
-    fetch('/mail.php', {
-      method: 'POST',
-      body: formData
-    })
-    .then(response => response.text())
-    .then(result => {
-      // Restore button state
+
+    try {
+      // POST JSON to the Vercel serverless function (api/contact.js)
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name:     nameInput.value.trim(),
+          phone:    phoneInput.value.trim(),
+          message:  messageInput.value.trim(),
+          honeypot: document.getElementById('website')?.value || '', // bot trap
+        }),
+      });
+
+      const data = await response.json();
+
       submitBtn.disabled = false;
       submitBtn.innerText = 'Wyślij wiadomość';
-      
-      // If we are previewing on Vercel or the server returned the raw PHP source code
-      const isVercelPreview = window.location.hostname.includes('vercel.app') || result.includes('<?php');
-      
-      if (result.trim() === 'success' || isVercelPreview) {
+
+      if (response.ok && data.success) {
         // Success state
-        successAlert.style.display = 'flex'; // Show success banner
-        e.target.reset(); // Reset form fields
-        
-        if (isVercelPreview) {
-          console.log("Vercel Preview: Simulated email dispatch to tim2rist@gmail.com. In a production PHP server, this runs mail.php.");
-        }
-        
-        // Hide success banner after 6 seconds
-        setTimeout(() => {
-          successAlert.style.display = 'none';
-        }, 6000);
+        successAlert.style.display = 'flex';
+        e.target.reset();
+        setTimeout(() => { successAlert.style.display = 'none'; }, 6000);
       } else {
-        alert('Wystąpił błąd podczas wysyłania wiadomości. Spróbuj ponownie lub skontaktuj się telefonicznie.');
+        alert(data.error || 'Wystąpił błąd podczas wysyłania wiadomości. Spróbuj ponownie lub skontaktuj się telefonicznie.');
       }
-    })
-    .catch(error => {
+    } catch (err) {
       submitBtn.disabled = false;
       submitBtn.innerText = 'Wyślij wiadomość';
       alert('Błąd połączenia. Upewnij się, że masz połączenie z internetem i spróbuj ponownie.');
-    });
+    }
   };
 
   return (
@@ -97,6 +89,17 @@ export default function Contact() {
             </div>
 
             <form id="contactForm" className="contact-form" onSubmit={handleSubmit}>
+              {/* Honeypot field — hidden from real users, filled by bots */}
+              <input
+                type="text"
+                id="website"
+                name="website"
+                style={{ display: 'none' }}
+                tabIndex="-1"
+                autoComplete="off"
+                aria-hidden="true"
+              />
+
               <div className="form-group-row" style={{ gridTemplateColumns: '1fr' }}>
                 <div>
                   <label htmlFor="name" className="form-label">Imię i nazwisko *</label>
