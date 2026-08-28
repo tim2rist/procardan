@@ -64,10 +64,10 @@ export default function Services() {
 
         {/* Bottom Box: Supported Vehicles */}
         <div className="service-card-vehicles">
-          <h3 style={{ fontSize: '18px', fontWeight: '700', color: 'var(--color-charcoal)', marginBottom: '8px' }}>
+          <h3 style={{ fontSize: '18px', fontWeight: '700', marginBottom: '8px' }}>
             Obsługiwane pojazdy i maszyny
           </h3>
-          <p style={{ fontSize: '14px', color: 'var(--color-gray-text)' }}>
+          <p style={{ fontSize: '14px', marginBottom: '12px' }}>
             Nasz warsztat posiada zaplecze techniczne przystosowane do pracy z wałami napędowymi każdego typu i przeznaczenia:
           </p>
 

@@ -1745,11 +1745,37 @@ textarea.form-control {
   left: 0;
   width: 100%;
   height: 100%;
-  /* Lighter wash: cardan graphic visible at ~20% through the overlay */
-  background: rgba(255, 255, 255, 0.82);
-  backdrop-filter: blur(1px);
-  -webkit-backdrop-filter: blur(1px);
+  /* Dark overlay (~40-50% opacity in the center) with subtle edge gradients for a seamless blend */
+  background: linear-gradient(
+    180deg,
+    rgba(15, 23, 42, 0.72) 0%,
+    rgba(15, 23, 42, 0.45) 45%,
+    rgba(15, 23, 42, 0.45) 55%,
+    rgba(15, 23, 42, 0.75) 100%
+  );
+  backdrop-filter: blur(1.5px);
+  -webkit-backdrop-filter: blur(1.5px);
   z-index: 1;
+}
+
+/* Header Text Enhancements for Readability */
+.services-section .section-overline {
+  color: #ff4d5a;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
+  letter-spacing: 2px;
+  font-weight: 700;
+}
+
+.services-section .section-title {
+  color: #ffffff;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.85), 0 2px 6px rgba(0, 0, 0, 0.7);
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.6));
+}
+
+.services-section .section-desc {
+  color: #e2e8f0;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.85);
+  font-weight: 400;
 }
 
 .services-grid {
@@ -1764,12 +1790,15 @@ textarea.form-control {
   margin-top: 30px;
 }
 
+/* Glassmorphism Service Cards */
 .service-card {
-  background-color: #ffffff;
-  border: 1px solid rgba(226, 232, 240, 0.9);
+  background-color: rgba(15, 23, 42, 0.65);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(71, 85, 105, 0.5);
   padding: 40px 30px;
-  border-radius: 8px;
-  box-shadow: 0 2px 12px rgba(15, 23, 42, 0.07), 0 1px 3px rgba(15, 23, 42, 0.05);
+  border-radius: 12px;
+  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
   transition: all var(--transition-normal);
   display: flex;
   flex-direction: column;
@@ -1785,50 +1814,74 @@ textarea.form-control {
   width: 4px;
   height: 100%;
   background-color: transparent;
-  transition: background-color var(--transition-fast);
+  transition: background-color var(--transition-fast), box-shadow var(--transition-fast);
 }
 
 .service-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 12px 32px rgba(15, 23, 42, 0.12), 0 2px 8px rgba(15, 23, 42, 0.06);
-  border-color: rgba(224, 30, 43, 0.2);
+  transform: translateY(-6px);
+  background-color: rgba(30, 41, 59, 0.82);
+  border-color: rgba(224, 30, 43, 0.5);
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.6), 0 0 24px rgba(224, 30, 43, 0.2);
 }
 
 .service-card:hover::before {
   background-color: var(--color-accent-red);
+  box-shadow: 0 0 12px var(--color-accent-red);
 }
 
 .service-icon {
-  color: var(--color-accent-red);
-  background-color: var(--color-accent-light);
+  color: #ff4d5a;
+  background-color: rgba(224, 30, 43, 0.16);
+  border: 1px solid rgba(224, 30, 43, 0.35);
   width: 56px;
   height: 56px;
-  border-radius: 6px;
+  border-radius: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 24px;
+  transition: all var(--transition-normal);
+}
+
+.service-card:hover .service-icon {
+  background-color: var(--color-accent-red);
+  color: #ffffff;
+  box-shadow: 0 0 16px rgba(224, 30, 43, 0.5);
 }
 
 .service-card h3 {
   font-size: 20px;
   font-weight: 700;
+  color: #ffffff;
   margin-bottom: 16px;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
 }
 
 .service-card p {
-  font-size: 14px;
-  color: var(--color-gray-text);
-  line-height: 1.6;
+  font-size: 14.5px;
+  color: #cbd5e1;
+  line-height: 1.65;
 }
 
+/* Glassmorphic Vehicles Box */
 .service-card-vehicles {
-  background-color: rgba(255, 255, 255, 0.96);
-  border: 1px solid rgba(226, 232, 240, 0.9);
-  box-shadow: 0 2px 12px rgba(15, 23, 42, 0.07);
-  padding: 30px;
-  border-radius: 8px;
+  background-color: rgba(15, 23, 42, 0.65);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(71, 85, 105, 0.5);
+  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  padding: 32px;
+  border-radius: 12px;
   margin-top: 30px;
+}
+
+.service-card-vehicles h3 {
+  color: #ffffff;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+}
+
+.service-card-vehicles p {
+  color: #cbd5e1;
 }
 
 .vehicles-list {
@@ -1839,23 +1892,39 @@ textarea.form-control {
 }
 
 .vehicle-item {
-  background-color: var(--color-white);
-  border: 1px solid var(--color-border);
+  background-color: rgba(30, 41, 59, 0.6);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(71, 85, 105, 0.45);
   padding: 16px;
-  border-radius: 6px;
+  border-radius: 8px;
   text-align: center;
   font-weight: 600;
   font-size: 14px;
-  color: var(--color-charcoal);
-  box-shadow: var(--shadow-sm);
+  color: #f1f5f9;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 10px;
+  transition: all var(--transition-fast);
+}
+
+.vehicle-item:hover {
+  transform: translateY(-3px);
+  background-color: rgba(51, 65, 85, 0.75);
+  border-color: rgba(224, 30, 43, 0.4);
+  color: #ffffff;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35), 0 0 12px rgba(224, 30, 43, 0.2);
 }
 
 .vehicle-item svg {
-  color: var(--color-accent-red);
+  color: #ff4d5a;
+  transition: transform var(--transition-fast);
+}
+
+.vehicle-item:hover svg {
+  transform: scale(1.12);
 }
 
 @media (max-width: 992px) {
