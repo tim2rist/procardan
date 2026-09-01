@@ -1,17 +1,6 @@
 import React from 'react';
 
 export default function Hero() {
-  const handleScrollToContact = (e) => {
-    e.preventDefault();
-    const contactSection = document.getElementById('kontakt');
-    if (contactSection) {
-      window.scrollTo({
-        top: contactSection.offsetTop - 30,
-        behavior: 'smooth',
-      });
-    }
-  };
-
   return (
     <section id="home" className="hero">
       <div className="hero-overlay" />
@@ -56,7 +45,10 @@ export default function Hero() {
             Kompleksowa regeneracja i produkcja wałów napędowych – ProCardan
           </h1>
           <p className="hero-subtitle">
-            Przywracamy pełną sprawność wałów napędowych do samochodów osobowych, dostawczych, ciężarowych, autobusów, pojazdów szynowych oraz maszyn rolniczych i budowlanych. Gwarancja jakości, precyzyjne wyważanie i szybki terminy realizacji.
+            Przywracamy pełną sprawność wałów napędowych do: samochodów osobowych, dostawczych, ciężarowych, autobusów, pojazdów szynowych oraz maszyn rolniczych i budowlanych.
+          </p>
+          <p className="hero-subtitle" style={{ marginTop: '8px', fontStyle: 'italic', opacity: 0.9 }}>
+            Gwarancja jakości, precyzyjne wyważanie i szybkie terminy realizacji.
           </p>
           <div className="hero-actions">
             <a href="tel:500052323" className="btn btn-primary">
@@ -76,7 +68,7 @@ export default function Hero() {
               </svg>
               Zadzwoń: 500 05 23 23
             </a>
-            <a href="#kontakt" onClick={handleScrollToContact} className="btn btn-secondary">
+            <a href="tel:+48500052323" className="btn btn-secondary">
               Zapytaj o wycenę
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -90,8 +82,7 @@ export default function Hero() {
                 strokeLinejoin="round"
                 className="btn-icon"
               >
-                <line x1="5" y1="12" x2="19" y2="12"></line>
-                <polyline points="12 5 19 12 12 19"></polyline>
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
               </svg>
             </a>
           </div>
@@ -108,7 +99,7 @@ export default function Hero() {
               </div>
               <div className="hero-card-text">
                 <h3>Ekspresowy czas serwisu</h3>
-                <p>Czas serwisu 1-4 godzin. Standardowa regeneracja gotowa w 24 - 48 godzin.</p>
+                <p>Ekspresowa naprawa trwa zaledwie 1–4 godziny, a standardowa regeneracja zajmuje od 24 do 48 godzin.</p>
               </div>
             </div>
 
@@ -117,8 +108,8 @@ export default function Hero() {
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
               </div>
               <div className="hero-card-text">
-                <h3>Pisemna Gwarancja</h3>
-                <p>Udzielamy pełnego zabezpieczenia gwarancyjnego na wykonane usługi + protokół wyważający na każdą wykonaną pracę.</p>
+                <h3>Pisemna gwarancja</h3>
+                <p>Zapewniamy pełną ochronę gwarancyjną na wszystkie usługi. Do każdej pracy dołączamy oficjalny protokół wyważenia.</p>
               </div>
             </div>
 
@@ -128,7 +119,7 @@ export default function Hero() {
               </div>
               <div className="hero-card-text">
                 <h3>Precyzyjne wyważanie</h3>
-                <p>Wyważamy dynamicznie z najwyższą dokładnością.</p>
+                <p>Proces wyważania realizujemy dynamicznie, zachowując najwyższą dokładność i parametry fabryczne.</p>
               </div>
             </div>
 
@@ -137,8 +128,18 @@ export default function Hero() {
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
               </div>
               <div className="hero-card-text">
-                <h3>Dojazd i odbiór 24/7</h3>
-                <p>Odbiór wału napędowego od klienta z całej Polski. Naprawa z dojazdem do klienta 24/7 (demontaż-naprawa-montaż).</p>
+                <h3>Odbiór i dostawa wałów</h3>
+                <p>Odbieramy uszkodzony wał od klienta, regenerujemy go i wysyłamy naprawiony na terenie całej Polski.</p>
+              </div>
+            </div>
+
+            <div className="hero-card-item">
+              <div className="hero-card-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+              </div>
+              <div className="hero-card-text">
+                <h3>Pomoc drogowa 24/7</h3>
+                <p>Świadczymy usługę naprawy wałów napędowych w samochodach dostawczych i ciężarowych z dojazdem do klienta 24/7 (demontaż – naprawa – montaż).</p>
               </div>
             </div>
           </div>

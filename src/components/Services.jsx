@@ -42,7 +42,7 @@ export default function Services() {
             </div>
             <h3>Wyważanie dynamiczne</h3>
             <p>
-              Wyważamy wały napędowe (1-, 2- i 3-częściowe) na specjalistycznych maszynach renomowanych firm. Eliminujemy wibracje z precyzją rzędu setnych części grama, zapobiegając uszkodzeniom łożysk podpory i skrzyni biegów.
+              Wyważamy wały napędowe (1-, 2- i 3-częściowe) na specjalistycznych maszynach renomowanych firm. Eliminujemy wibracje z precyzją rzędu setnych części grama, zapobiegając uszkodzeniom łożysk podpory i skrzyń biegów.
             </p>
           </div>
 

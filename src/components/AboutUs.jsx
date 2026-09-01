@@ -8,14 +8,14 @@ export default function AboutUs() {
           {/* Left Column: Text & Technical Details */}
           <div className="about-content">
             <span className="section-overline">O nas & Technologia</span>
-            <h2 className="section-title section-title-left">O nas — Eksperci od wałów kardana</h2>
+            <h2 className="section-title section-title-left">O nas — Eksperci od wałów Cardana</h2>
             
             <div className="about-text">
               <p>
                 W <strong>ProCardan</strong> specjalizujemy się w profesjonalnym serwisie, wyważaniu oraz produkcji wałów napędowych. Łączymy pasję do mechaniki precyzyjnej z nowoczesną technologią obróbki metalu.
               </p>
               <p>
-                Kluczowym elementem naszej pracy jest eliminacja bicia i wibracji. Stosujemy zaawansowane, dynamiczne wyważarki renomowanych firm. Maszyny te diagnozują odchylenia rzędu setnych części grama, co przekłada się na długą, bezawaryjną pracę podpór, przegubów oraz skrzyni biegów. Każdy wyprodukowany lub naprawiony wał przechodzi dokładną kontrolę.
+                Kluczowym elementem naszej pracy jest eliminacja bicia i wibracji. Stosujemy zaawansowane, dynamiczne wyważarki renomowanych firm. Maszyny te diagnozują odchylenia rzędu setnych części grama, co przekłada się na długą, bezawaryjną pracę podpór, przegubów oraz skrzyń biegów. Każdy wyprodukowany lub naprawiony wał przechodzi dokładną kontrolę.
               </p>
             </div>
 
@@ -30,7 +30,7 @@ export default function AboutUs() {
                 <span className="stat-label">Naprawionych wałów</span>
               </div>
               <div className="stat-item">
-                <span className="stat-number">99.9%</span>
+                <span className="stat-number">99,9%</span>
                 <span className="stat-label">Zadowolonych klientów</span>
               </div>
             </div>

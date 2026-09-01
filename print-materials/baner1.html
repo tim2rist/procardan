@@ -3,8 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Baner 1 — ProCardan</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+  <title>Baner 1 — ProCardan (Kierunkowy)</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
 
@@ -13,36 +12,219 @@
       -webkit-print-color-adjust: exact !important;
       print-color-adjust: exact !important;
       box-sizing: border-box;
-    }
-
-    body {
-      background-color: #0f172a;
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       margin: 0;
       padding: 0;
     }
 
+    body {
+      background-color: #1e293b;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 20px;
+    }
+
     .banner-container {
       width: 100%;
-      max-width: 1360px;
-      aspect-ratio: 3 / 1;
-      background: #ffffff;
+      max-width: 700px;
+      aspect-ratio: 1 / 1;
+      background: #0f172a;
       position: relative;
       overflow: hidden;
       break-inside: avoid;
       page-break-inside: avoid;
       container-type: inline-size;
-      padding: 2.2cqw 3.5cqw;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      border-radius: 2px;
+    }
+
+    /* Driveshaft background overlay */
+    .banner-bg-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0.04;
+      pointer-events: none;
+    }
+
+    .banner-content {
+      position: relative;
+      z-index: 2;
+      padding: 5cqw;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    /* Top: Logo Row */
+    .top-row {
+      display: flex;
+      align-items: center;
+      gap: 2cqw;
+    }
+
+    .banner-logo {
+      height: 5cqw;
+      width: auto;
+    }
+
+    .banner-brand {
+      font-size: 4.5cqw;
+      font-weight: 900;
+      color: #ffffff;
+      letter-spacing: -0.5px;
+      line-height: 1;
+    }
+
+    .banner-brand-accent {
+      color: #ef4444;
+    }
+
+    /* Center: Main Headline */
+    .headline-block {
+      text-align: center;
+    }
+
+    .headline {
+      font-size: 7cqw;
+      font-weight: 900;
+      color: #ffffff;
+      text-transform: uppercase;
+      letter-spacing: -0.5px;
+      line-height: 1.05;
+    }
+
+    .headline-sub {
+      font-size: 2.2cqw;
+      font-weight: 600;
+      color: #94a3b8;
+      margin-top: 1.5cqw;
+      letter-spacing: 0.5px;
+    }
+
+    /* Bottom Info */
+    .bottom-section {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 3cqw;
+    }
+
+    .info-block {
+      flex: 1;
+    }
+
+    .info-label {
+      font-size: 1.4cqw;
+      font-weight: 700;
+      color: #64748b;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 0.5cqw;
+    }
+
+    .info-address {
+      font-size: 2.4cqw;
+      font-weight: 700;
+      color: #e2e8f0;
+      line-height: 1.3;
+    }
+
+    .info-phone-label {
+      font-size: 1.4cqw;
+      font-weight: 700;
+      color: #ef4444;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 0.5cqw;
+    }
+
+    .info-phone {
+      font-size: 3.2cqw;
+      font-weight: 900;
+      color: #ffffff;
+      white-space: nowrap;
+      line-height: 1;
+    }
+
+    /* Directional Red Block */
+    .direction-block {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 2cqw;
+      background: #ef4444;
+      padding: 2.5cqw 3.5cqw;
+      border-radius: 1cqw;
+      flex-shrink: 0;
+    }
+
+    .direction-distance {
+      font-size: 5cqw;
+      font-weight: 900;
+      color: #ffffff;
+      white-space: nowrap;
+      line-height: 1;
+    }
+
+    .direction-arrow {
+      font-size: 6cqw;
+      color: #ffffff;
+      font-weight: 900;
+      line-height: 1;
+    }
+
+    /* Separator line */
+    .separator {
+      width: 100%;
+      height: 1px;
+      background: rgba(148, 163, 184, 0.15);
+    }
+
+    /* Print button */
+    .no-print {
+      margin-bottom: 30px;
+    }
+
+    .print-btn {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: #ef4444;
+      color: #ffffff;
+      font-size: 14px;
+      font-weight: 600;
+      padding: 10px 24px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-family: inherit;
+      box-shadow: 0 4px 14px rgba(239, 68, 68, 0.4);
+      transition: background 0.2s;
+    }
+
+    .print-btn:hover {
+      background: #dc2626;
+    }
+
+    .print-wrapper {
+      width: 100%;
+      max-width: 700px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
     @media print {
       body {
         background: #ffffff !important;
         padding: 0 !important;
-        margin: 0 !important;
       }
       .no-print {
         display: none !important;
@@ -52,6 +234,7 @@
         margin: 0 !important;
         width: 100vw !important;
         min-height: 100vh !important;
+        max-width: 100vw !important;
         display: flex !important;
         align-items: center !important;
         justify-content: center !important;
@@ -71,63 +254,78 @@
     }
   </style>
 </head>
-<body class="min-h-screen flex flex-col items-center py-8">
+<body>
 
-  <!-- ── Print Trigger Button (Screen Only) ── -->
-  <div class="no-print mb-8 sticky top-4 z-50">
-    <button onclick="window.print()" class="flex items-center gap-2 bg-red-500 hover:bg-red-600 text-white text-sm font-semibold px-6 py-2.5 rounded shadow-lg transition cursor-pointer">
+  <!-- Print Trigger Button -->
+  <div class="no-print">
+    <button onclick="window.print()" class="print-btn">
       <span>🖨️ Drukuj PDF</span>
     </button>
   </div>
 
-  <!-- ── Print Wrapper ── -->
-  <div class="print-wrapper w-full max-w-7xl px-4 flex justify-center items-center">
+  <!-- Print Wrapper -->
+  <div class="print-wrapper">
 
-    <!-- ════════════════ BANNER 1 (3:1 Landscape) ════════════════ -->
-    <div class="banner-container shadow-2xl rounded-sm border border-slate-200">
-      
-      <!-- Top Row: Identical Coordinate & Proportions -->
-      <div class="flex items-center justify-between">
-        <div class="flex items-center" style="gap: 1.2cqw;">
-          <img src="../public/logo_mark.png" alt="ProCardan Logo" style="height: 2.6cqw; width: auto;" />
-          <span style="font-size: 2.1cqw;" class="font-black text-slate-900 tracking-tight leading-none">
-            Pro<span class="text-red-500">Cardan</span>
+    <!-- ════════════════ BANNER 1 (1:1 Square Directional) ════════════════ -->
+    <div class="banner-container" style="box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);">
+
+      <!-- Driveshaft SVG Background -->
+      <svg class="banner-bg-overlay" viewBox="0 0 700 700" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Main shaft running diagonally -->
+        <rect x="50" y="320" width="600" height="60" rx="6" fill="#94a3b8" transform="rotate(-8 350 350)"/>
+        <!-- Flanges -->
+        <rect x="30" y="295" width="30" height="110" rx="5" fill="#94a3b8" transform="rotate(-8 45 350)"/>
+        <rect x="640" y="295" width="30" height="110" rx="5" fill="#94a3b8" transform="rotate(-8 655 350)"/>
+        <!-- Universal joints -->
+        <circle cx="200" cy="340" r="35" stroke="#94a3b8" stroke-width="6" fill="none"/>
+        <circle cx="500" cy="340" r="35" stroke="#94a3b8" stroke-width="6" fill="none"/>
+        <line x1="200" y1="300" x2="200" y2="380" stroke="#94a3b8" stroke-width="8"/>
+        <line x1="160" y1="340" x2="240" y2="340" stroke="#94a3b8" stroke-width="8"/>
+        <line x1="500" y1="300" x2="500" y2="380" stroke="#94a3b8" stroke-width="8"/>
+        <line x1="460" y1="340" x2="540" y2="340" stroke="#94a3b8" stroke-width="8"/>
+        <!-- Center bearing -->
+        <circle cx="350" cy="350" r="30" stroke="#94a3b8" stroke-width="5" fill="none"/>
+        <circle cx="350" cy="350" r="12" fill="#94a3b8"/>
+      </svg>
+
+      <div class="banner-content">
+
+        <!-- Top: Logo -->
+        <div class="top-row">
+          <img src="../public/logo_mark.png" alt="ProCardan Logo" class="banner-logo" />
+          <span class="banner-brand">
+            Pro<span class="banner-brand-accent">Cardan</span>
           </span>
         </div>
-        <span style="font-size: 0.85cqw;" class="font-bold text-slate-400 uppercase tracking-widest">
-          Serwis Wałów Napędowych
-        </span>
-      </div>
 
-      <!-- Center: Identical Main Heading -->
-      <div class="my-auto">
-        <h1 style="font-size: 2.9cqw; line-height: 1.05;" class="font-black text-slate-900 uppercase tracking-tight">
-          REGENERACJA WAŁÓW NAPĘDOWYCH
-        </h1>
-      </div>
-
-      <!-- Bottom Row: Address, Phone, and Clean Red Arrow -->
-      <div class="border-t border-slate-200 flex items-center justify-between" style="padding-top: 1.2cqw;">
-        
-        <!-- Address -->
-        <div>
-          <span style="font-size: 0.7cqw;" class="font-semibold text-slate-400 block uppercase tracking-wider">Lokalizacja:</span>
-          <p style="font-size: 1.15cqw;" class="font-bold text-slate-800">ul. Wodzisławska 1, 52-017 Wrocław</p>
+        <!-- Center: Headline -->
+        <div class="headline-block">
+          <h1 class="headline">REGENERACJA<br>WAŁÓW<br>NAPĘDOWYCH</h1>
+          <p class="headline-sub">Profesjonalny serwis wałów napędowych</p>
         </div>
 
-        <!-- Phone & Red Directional Arrow -->
-        <div class="flex items-center" style="gap: 2cqw;">
-          <div class="text-right">
-            <span style="font-size: 0.7cqw;" class="font-bold text-red-500 block uppercase tracking-wider">Kontakt telefoniczny:</span>
-            <p style="font-size: 1.6cqw;" class="font-black text-slate-900 whitespace-nowrap leading-none">+48 500 05 23 23</p>
+        <!-- Separator -->
+        <div class="separator"></div>
+
+        <!-- Bottom: Address + Phone + Arrow -->
+        <div class="bottom-section">
+
+          <div class="info-block">
+            <p class="info-label">Adres:</p>
+            <p class="info-address">ul. Wodzisławska 1,<br>52-017 Wrocław</p>
+            <p class="info-phone-label" style="margin-top: 1.5cqw;">TEL:</p>
+            <p class="info-phone">+48 500 05 23 23</p>
           </div>
 
-          <!-- Clean Minimalist Red Arrow -->
-          <span style="font-size: 2.4cqw;" class="text-red-500 font-bold leading-none select-none">→</span>
+          <!-- Directional Red Block -->
+          <div class="direction-block">
+            <span class="direction-distance">400 m</span>
+            <span class="direction-arrow">→</span>
+          </div>
+
         </div>
 
       </div>
-
     </div>
 
   </div>

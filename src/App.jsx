@@ -4,7 +4,7 @@ import Hero from './components/Hero';
 import Features from './components/Features';
 import AboutUs from './components/AboutUs';
 import Services from './components/Services';
-import Gallery from './components/Gallery';
+// Gallery removed per client request
 import Contact from './components/Contact';
 import SEOKeywords from './components/SEOKeywords';
 import Footer from './components/Footer';
@@ -20,7 +20,7 @@ function App() {
         <Features />
         <AboutUs />
         <Services />
-        <Gallery />
+        {/* Gallery removed per client request */}
         <Contact />
         <SEOKeywords />
       </main>

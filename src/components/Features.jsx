@@ -10,7 +10,7 @@ export default function Features() {
         </svg>
       ),
       title: 'Ekspresowy czas serwisu',
-      description: 'Czas serwisu 1-4 godzin. Standardowa regeneracja gotowa w 24 - 48 godzin.',
+      description: 'Ekspresowa naprawa trwa zaledwie 1–4 godziny, a standardowa regeneracja zajmuje od 24 do 48 godzin.',
     },
     {
       icon: (
@@ -18,8 +18,8 @@ export default function Features() {
           <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
         </svg>
       ),
-      title: 'Pisemna Gwarancja',
-      description: 'Udzielamy pełnego zabezpieczenia gwarancyjnego na wykonane usługi + protokół wyważający na każdą wykonaną pracę.',
+      title: 'Pisemna gwarancja',
+      description: 'Zapewniamy pełną ochronę gwarancyjną na wszystkie usługi. Do każdej pracy dołączamy oficjalny protokół wyważenia.',
     },
     {
       icon: (
@@ -30,7 +30,7 @@ export default function Features() {
         </svg>
       ),
       title: 'Precyzyjne wyważanie',
-      description: 'Wyważamy dynamicznie z najwyższą dokładnością.',
+      description: 'Proces wyważania realizujemy dynamicznie, zachowując najwyższą dokładność i parametry fabryczne.',
     },
     {
       icon: (
@@ -41,8 +41,17 @@ export default function Features() {
           <circle cx="18.5" cy="18.5" r="2.5" />
         </svg>
       ),
-      title: 'Dojazd i odbiór 24/7',
-      description: 'Odbiór wału napędowego od klienta z całej Polski. Świadczymy usługę naprawę wału napędowego w samochodach dostawczych i ciężarowych z dojazdem do klienta 24/7 (demontaż-naprawa-montaż).',
+      title: 'Odbiór i dostawa wałów',
+      description: 'Odbieramy uszkodzony wał od klienta, regenerujemy go i wysyłamy naprawiony na terenie całej Polski.',
+    },
+    {
+      icon: (
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+        </svg>
+      ),
+      title: 'Pomoc drogowa 24/7',
+      description: 'Świadczymy usługę naprawy wałów napędowych w samochodach dostawczych i ciężarowych z dojazdem do klienta 24/7 (demontaż – naprawa – montaż).',
     },
   ];
 
@@ -59,7 +68,7 @@ export default function Features() {
 
         <div className="features-grid">
           {featuresList.map((feature, idx) => (
-            <div key={idx} className="feature-card">
+            <div key={idx} className={`feature-card ${idx < 2 ? 'feature-card-featured' : ''}`}>
               <div className="feature-icon-wrapper">{feature.icon}</div>
               <h3 className="feature-title">{feature.title}</h3>
               <p className="feature-desc">{feature.description}</p>

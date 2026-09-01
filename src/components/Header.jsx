@@ -14,7 +14,7 @@ export default function Header() {
       }
 
       // Track sections to highlight active menu item
-      const sections = ['home', 'o-nas', 'uslugi', 'galeria', 'kontakt'];
+      const sections = ['home', 'o-nas', 'uslugi', 'kontakt'];
       const scrollPosition = window.scrollY + 100;
 
       for (const section of sections) {
@@ -90,15 +90,7 @@ export default function Header() {
                   Usługi
                 </a>
               </li>
-              <li>
-                <a
-                  href="#galeria"
-                  className={`nav-link ${activeSection === 'galeria' ? 'active' : ''}`}
-                  onClick={(e) => handleNavClick(e, 'galeria')}
-                >
-                  Galeria
-                </a>
-              </li>
+
               <li>
                 <a
                   href="#kontakt"
@@ -177,15 +169,7 @@ export default function Header() {
             Usługi
           </a>
         </li>
-        <li>
-          <a
-            href="#galeria"
-            className={`nav-link ${activeSection === 'galeria' ? 'active' : ''}`}
-            onClick={(e) => handleNavClick(e, 'galeria')}
-          >
-            Galeria
-          </a>
-        </li>
+
         <li>
           <a
             href="#kontakt"

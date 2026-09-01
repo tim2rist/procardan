@@ -56,11 +56,7 @@ export default function Footer() {
                   Usługi
                 </a>
               </li>
-              <li>
-                <a href="#galeria" onClick={(e) => handleNavClick(e, 'galeria')}>
-                  Galeria
-                </a>
-              </li>
+
               <li>
                 <a href="#kontakt" onClick={(e) => handleNavClick(e, 'kontakt')}>
                   Kontakt
@@ -74,8 +70,6 @@ export default function Footer() {
             <h4>Dane Firmy</h4>
             <div className="footer-credentials">
               <p><strong>ProCardan</strong></p>
-              {/* TODO: Replace [WSTAW_NIP] with the company's actual 10-digit NIP number */}
-              <p style={{ fontSize: '13px', color: '#a0aec0' }}>NIP: [WSTAW_NIP]</p>
               <p>ul. Wodzisławska 1, 52-017 Wrocław</p>
               <p>Tel: <a href="tel:500052323" style={{ color: 'var(--color-white)', fontWeight: '600' }}>500-05-23-23</a></p>
               <p>E-mail: <a href="mailto:procardan1@gmail.com" style={{ color: '#a0aec0' }}>procardan1@gmail.com</a></p>

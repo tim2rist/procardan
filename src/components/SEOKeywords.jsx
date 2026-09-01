@@ -24,7 +24,7 @@ export default function SEOKeywords() {
       <div className="container">
         <div className="section-header" style={{ marginBottom: '40px' }}>
           <span className="section-overline">Nasz zasięg</span>
-          <h2 className="section-title">Obszar działania: Wrocław, Dolny Śląsk oraz cała Polska</h2>
+          <h2 className="section-title">Obszar działania: Wrocław - Dolny Śląsk oraz cała Polska</h2>
         </div>
 
         {/* CTA Text Block */}

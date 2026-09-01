@@ -4,7 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Wizytówka — ProCardan</title>
-  <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
 
@@ -13,46 +12,237 @@
       -webkit-print-color-adjust: exact !important;
       print-color-adjust: exact !important;
       box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
     body {
-      background-color: #0f172a;
+      background-color: #1e293b;
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      margin: 0;
-      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 20px;
     }
 
     .card-box {
       width: 94mm;
       height: 54mm;
-      background: #ffffff;
+      background: #0f172a;
       position: relative;
       overflow: hidden;
       break-inside: avoid;
       page-break-inside: avoid;
+      border-radius: 2px;
+    }
+
+    /* Driveshaft background overlay SVG */
+    .card-bg-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0.06;
+      pointer-events: none;
+    }
+
+    .card-content {
+      position: relative;
+      z-index: 2;
+      padding: 6mm;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    /* === FRONT SIDE === */
+    .front-header {
+      display: flex;
+      align-items: center;
+      gap: 2.5mm;
+    }
+
+    .front-logo {
+      height: 7.5mm;
+      width: auto;
+    }
+
+    .front-brand {
+      font-size: 12pt;
+      font-weight: 900;
+      color: #ffffff;
+      letter-spacing: -0.3px;
+      line-height: 1;
+    }
+
+    .front-brand-accent {
+      color: #ef4444;
+    }
+
+    .front-heading {
+      font-size: 5pt;
+      font-weight: 700;
+      color: #94a3b8;
+      text-transform: uppercase;
+      letter-spacing: 1.6px;
+      margin-top: 1.4mm;
+      line-height: 1;
+    }
+
+    /* Contact grid */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 1.8mm 3.5mm;
+      align-items: center;
+    }
+
+    .contact-label {
+      font-size: 6pt;
+      font-weight: 700;
+      color: #ef4444;
+      letter-spacing: 0.8px;
+    }
+
+    .contact-value {
+      font-size: 7pt;
+      font-weight: 700;
+      color: #ffffff;
+      letter-spacing: -0.2px;
+    }
+
+    /* Bottom bar */
+    .front-footer {
+      padding-top: 1.5mm;
+      border-top: 1px solid rgba(148, 163, 184, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 4.8pt;
+      font-weight: 600;
+    }
+
+    .front-footer-left {
+      color: #64748b;
+    }
+
+    .front-footer-right {
+      color: #ef4444;
+    }
+
+    /* === BACK SIDE === */
+    .back-header {
+      font-size: 7.2pt;
+      font-weight: 700;
+      color: #ffffff;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.2mm 4mm;
+    }
+
+    .service-item {
+      display: flex;
+      align-items: center;
+      gap: 2mm;
+    }
+
+    .service-bullet {
+      color: #ef4444;
+      font-size: 8pt;
+      line-height: 1;
+      font-weight: 700;
+    }
+
+    .service-text {
+      font-size: 6pt;
+      font-weight: 600;
+      color: #e2e8f0;
+    }
+
+    .back-footer {
+      padding-top: 1.5mm;
+      border-top: 1px solid rgba(148, 163, 184, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 5.2pt;
+    }
+
+    .back-footer-left {
+      font-weight: 600;
+      color: #64748b;
+    }
+
+    .back-footer-right {
+      font-weight: 700;
+      color: #ffffff;
+    }
+
+    /* Print button */
+    .no-print {
+      margin-bottom: 30px;
+    }
+
+    .print-btn {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: #ef4444;
+      color: #ffffff;
+      font-size: 14px;
+      font-weight: 600;
+      padding: 10px 24px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-family: inherit;
+      box-shadow: 0 4px 14px rgba(239, 68, 68, 0.4);
+      transition: background 0.2s;
+    }
+
+    .print-btn:hover {
+      background: #dc2626;
+    }
+
+    .print-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 30px;
+    }
+
+    .card-label {
+      font-size: 11px;
+      font-weight: 600;
+      color: #94a3b8;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: -20px;
     }
 
     @media print {
       body {
         background: #ffffff !important;
         padding: 0 !important;
-        margin: 0 !important;
       }
-      .no-print {
+      .no-print, .card-label {
         display: none !important;
       }
       .print-container {
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: center !important;
-        justify-content: flex-start !important;
         gap: 10mm !important;
         padding: 12mm 0 !important;
         margin: 0 auto !important;
       }
       .card-box {
         box-shadow: none !important;
-        border: 0.2mm solid #e2e8f0 !important;
+        border: 0.2mm solid #334155 !important;
       }
       @page {
         size: A4 portrait;
@@ -61,109 +251,141 @@
     }
   </style>
 </head>
-<body class="min-h-screen flex flex-col items-center py-8">
+<body>
 
-  <!-- ── Print Trigger Button (Screen Only) ── -->
-  <div class="no-print mb-8 sticky top-4 z-50">
-    <button onclick="window.print()" class="flex items-center gap-2 bg-red-500 hover:bg-red-600 text-white text-sm font-semibold px-6 py-2.5 rounded shadow-lg transition cursor-pointer">
+  <!-- Print Trigger Button -->
+  <div class="no-print">
+    <button onclick="window.print()" class="print-btn">
       <span>🖨️ Drukuj PDF</span>
     </button>
   </div>
 
-  <!-- ── Print Container ── -->
-  <div class="print-container flex flex-col items-center gap-8">
+  <!-- Print Container -->
+  <div class="print-container">
+
+    <span class="card-label">Przód wizytówki</span>
 
     <!-- ════════════════ FRONT SIDE ════════════════ -->
-    <div class="card-box shadow-2xl rounded-sm p-[6mm] flex flex-col justify-between border border-slate-200">
-      
-      <!-- Top: Strict Left-Aligned Header & Logo -->
-      <div class="text-left">
-        <div class="flex items-center gap-[2.5mm]">
-          <img src="../public/logo_mark.png" alt="ProCardan Logo" class="h-[7.5mm] w-auto" />
-          <span class="text-[12pt] font-black text-slate-900 tracking-tight leading-none">
-            Pro<span class="text-red-500">Cardan</span>
-          </span>
+    <div class="card-box" style="box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);">
+
+      <!-- Driveshaft SVG Background -->
+      <svg class="card-bg-overlay" viewBox="0 0 400 230" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Shaft tube -->
+        <rect x="20" y="95" width="360" height="40" rx="4" fill="#94a3b8"/>
+        <!-- Flanges -->
+        <rect x="10" y="75" width="20" height="80" rx="3" fill="#94a3b8"/>
+        <rect x="370" y="75" width="20" height="80" rx="3" fill="#94a3b8"/>
+        <!-- Universal joint crosses -->
+        <line x1="100" y1="80" x2="100" y2="150" stroke="#94a3b8" stroke-width="6"/>
+        <line x1="70" y1="115" x2="130" y2="115" stroke="#94a3b8" stroke-width="6"/>
+        <line x1="300" y1="80" x2="300" y2="150" stroke="#94a3b8" stroke-width="6"/>
+        <line x1="270" y1="115" x2="330" y2="115" stroke="#94a3b8" stroke-width="6"/>
+        <!-- Center support bearing -->
+        <circle cx="200" cy="115" r="22" stroke="#94a3b8" stroke-width="4" fill="none"/>
+        <circle cx="200" cy="115" r="10" fill="#94a3b8"/>
+      </svg>
+
+      <div class="card-content">
+        <!-- Top: Logo & Heading -->
+        <div>
+          <div class="front-header">
+            <img src="../public/logo_mark.png" alt="ProCardan Logo" class="front-logo" />
+            <span class="front-brand">
+              Pro<span class="front-brand-accent">Cardan</span>
+            </span>
+          </div>
+          <p class="front-heading">REGENERACJA WAŁÓW NAPĘDOWYCH PROCARDAN</p>
         </div>
-        <p class="text-[5pt] font-bold text-slate-500 uppercase tracking-widest mt-[1.4mm] leading-none">
-          REGENERACJA WAŁÓW NAPĘDOWYCH
-        </p>
+
+        <!-- Center: Contact Block -->
+        <div class="contact-grid">
+          <span class="contact-label">TEL:</span>
+          <span class="contact-value">+48 500-05-23-23</span>
+
+          <span class="contact-label">MAIL:</span>
+          <span class="contact-value">procardan1@gmail.com</span>
+
+          <span class="contact-label">WWW:</span>
+          <span class="contact-value">www.procardan.pl</span>
+
+          <span class="contact-label">ADRES:</span>
+          <span class="contact-value">ul. Wodzisławska 1, 52-017 Wrocław</span>
+        </div>
+
+        <!-- Bottom -->
+        <div class="front-footer">
+          <span class="front-footer-left">Dolny Śląsk · Cała Polska</span>
+          <span class="front-footer-right">Ekspres 1-4h / Standard 24-48h</span>
+        </div>
       </div>
-
-      <!-- Center: Perfect CSS Grid Contacts Block (Flush Left Axis) -->
-      <div class="grid grid-cols-[auto_1fr] gap-x-[3.5mm] gap-y-[1.8mm] my-auto items-center">
-        <span class="text-[6pt] font-bold text-red-500 tracking-wider">TEL:</span>
-        <span class="text-[7pt] font-bold text-slate-900 tracking-tight">+48 500-05-23-23</span>
-
-        <span class="text-[6pt] font-bold text-red-500 tracking-wider">WWW:</span>
-        <span class="text-[7pt] font-bold text-slate-900 tracking-tight">www.procardan.pl</span>
-
-        <span class="text-[6pt] font-bold text-red-500 tracking-wider">MAIL:</span>
-        <span class="text-[7pt] font-bold text-slate-900 tracking-tight">procardan1@gmail.com</span>
-
-        <span class="text-[6pt] font-bold text-red-500 tracking-wider">ADRES:</span>
-        <span class="text-[7pt] font-bold text-slate-900 tracking-tight">ul. Wodzisławska 1, 52-017 Wrocław</span>
-      </div>
-
-      <!-- Bottom Subtext -->
-      <div class="pt-[1.5mm] border-t border-slate-100 flex items-center justify-between text-[4.8pt] font-semibold text-slate-400">
-        <span>Dolny Śląsk · Cała Polska</span>
-        <span class="text-red-500">Ekspres 1-4h / Standard 24-48h</span>
-      </div>
-
     </div>
 
+    <span class="card-label">Tył wizytówki</span>
+
     <!-- ════════════════ BACK SIDE ════════════════ -->
-    <div class="card-box shadow-2xl rounded-sm p-[6mm] flex flex-col justify-between border border-slate-200">
+    <div class="card-box" style="box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);">
 
-      <!-- Header: Left-Aligned -->
-      <div class="text-left">
-        <h2 class="text-[7.2pt] font-bold text-slate-900 tracking-wider uppercase">
-          PROFESJONALNY SERWIS WAŁÓW NAPĘDOWYCH:
-        </h2>
+      <!-- Driveshaft SVG Background -->
+      <svg class="card-bg-overlay" viewBox="0 0 400 230" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="20" y="95" width="360" height="40" rx="4" fill="#94a3b8"/>
+        <rect x="10" y="75" width="20" height="80" rx="3" fill="#94a3b8"/>
+        <rect x="370" y="75" width="20" height="80" rx="3" fill="#94a3b8"/>
+        <line x1="100" y1="80" x2="100" y2="150" stroke="#94a3b8" stroke-width="6"/>
+        <line x1="70" y1="115" x2="130" y2="115" stroke="#94a3b8" stroke-width="6"/>
+        <line x1="300" y1="80" x2="300" y2="150" stroke="#94a3b8" stroke-width="6"/>
+        <line x1="270" y1="115" x2="330" y2="115" stroke="#94a3b8" stroke-width="6"/>
+        <circle cx="200" cy="115" r="22" stroke="#94a3b8" stroke-width="4" fill="none"/>
+        <circle cx="200" cy="115" r="10" fill="#94a3b8"/>
+      </svg>
+
+      <div class="card-content">
+        <!-- Header -->
+        <div>
+          <h2 class="back-header">PROFESJONALNY SERWIS WAŁÓW NAPĘDOWYCH:</h2>
+        </div>
+
+        <!-- 8 Services (2 Columns) -->
+        <div class="services-grid">
+          <div class="service-item">
+            <span class="service-bullet">•</span>
+            <span class="service-text">Regeneracja wałów</span>
+          </div>
+          <div class="service-item">
+            <span class="service-bullet">•</span>
+            <span class="service-text">Wyważanie dynamiczne</span>
+          </div>
+          <div class="service-item">
+            <span class="service-bullet">•</span>
+            <span class="service-text">Produkcja wałów</span>
+          </div>
+          <div class="service-item">
+            <span class="service-bullet">•</span>
+            <span class="service-text">Przeguby homokinetyczne</span>
+          </div>
+          <div class="service-item">
+            <span class="service-bullet">•</span>
+            <span class="service-text">Smarowanie</span>
+          </div>
+          <div class="service-item">
+            <span class="service-bullet">•</span>
+            <span class="service-text">Sprzedaż części</span>
+          </div>
+          <div class="service-item">
+            <span class="service-bullet">•</span>
+            <span class="service-text">Dorabianie</span>
+          </div>
+          <div class="service-item">
+            <span class="service-bullet">•</span>
+            <span class="service-text">Zagniatanie krzyżaków</span>
+          </div>
+        </div>
+
+        <!-- Bottom -->
+        <div class="back-footer">
+          <span class="back-footer-left">ul. Wodzisławska 1, 52-017 Wrocław</span>
+          <span class="back-footer-right">+48 500-05-23-23</span>
+        </div>
       </div>
-
-      <!-- Clean 8 Services List (2 Columns) -->
-      <div class="grid grid-cols-2 gap-x-[4mm] gap-y-[2.2mm] my-auto">
-        <div class="flex items-center gap-[2mm]">
-          <span class="text-red-500 text-[8pt] leading-none font-bold">•</span>
-          <span class="text-[6pt] font-semibold text-slate-800">Regeneracja wałów</span>
-        </div>
-        <div class="flex items-center gap-[2mm]">
-          <span class="text-red-500 text-[8pt] leading-none font-bold">•</span>
-          <span class="text-[6pt] font-semibold text-slate-800">Wyważanie dynamiczne</span>
-        </div>
-        <div class="flex items-center gap-[2mm]">
-          <span class="text-red-500 text-[8pt] leading-none font-bold">•</span>
-          <span class="text-[6pt] font-semibold text-slate-800">Produkcja wałów</span>
-        </div>
-        <div class="flex items-center gap-[2mm]">
-          <span class="text-red-500 text-[8pt] leading-none font-bold">•</span>
-          <span class="text-[6pt] font-semibold text-slate-800">Przeguby homokinetyczne</span>
-        </div>
-        <div class="flex items-center gap-[2mm]">
-          <span class="text-red-500 text-[8pt] leading-none font-bold">•</span>
-          <span class="text-[6pt] font-semibold text-slate-800">Smarowanie</span>
-        </div>
-        <div class="flex items-center gap-[2mm]">
-          <span class="text-red-500 text-[8pt] leading-none font-bold">•</span>
-          <span class="text-[6pt] font-semibold text-slate-800">Sprzedaż części</span>
-        </div>
-        <div class="flex items-center gap-[2mm]">
-          <span class="text-red-500 text-[8pt] leading-none font-bold">•</span>
-          <span class="text-[6pt] font-semibold text-slate-800">Dorabianie</span>
-        </div>
-        <div class="flex items-center gap-[2mm]">
-          <span class="text-red-500 text-[8pt] leading-none font-bold">•</span>
-          <span class="text-[6pt] font-semibold text-slate-800">Zagniatanie krzyżaków</span>
-        </div>
-      </div>
-
-      <!-- Bottom Subtext -->
-      <div class="pt-[1.5mm] border-t border-slate-100 flex items-center justify-between text-[5.2pt]">
-        <span class="font-semibold text-slate-500">ul. Wodzisławska 1, Wrocław</span>
-        <span class="font-bold text-slate-900">+48 500-05-23-23</span>
-      </div>
-
     </div>
 
   </div>
