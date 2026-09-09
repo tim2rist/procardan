@@ -30,7 +30,7 @@ export default function CookieModal({ isOpen, onClose, onSave, savedPreferences 
   };
 
   return (
-    <div className="cookie-modal-overlay" onClick={onClose}>
+    <div className="cookie-modal-overlay" onClick={onClose} role="button" aria-label="Zamknij ustawienia prywatności" tabIndex={0} onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') onClose(); }}>
       <div className="cookie-modal animate-fade-in-up" onClick={(e) => e.stopPropagation()}>
         <div className="cookie-modal-header">
           <h3>Ustawienia Prywatności</h3>

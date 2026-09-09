@@ -3,7 +3,7 @@ import React from 'react';
 export default function MobileCTA() {
   return (
     <div className="mobile-floating-cta" aria-label="Mobilny skrót połączenia">
-      <a href="tel:500052323" className="mobile-cta-btn">
+      <a href="tel:500052323" className="mobile-cta-btn" aria-label="Zadzwoń do ProCardan: 500 05 23 23">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="20"

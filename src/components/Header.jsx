@@ -141,7 +141,7 @@ export default function Header() {
       </header>
 
       {/* Mobile Drawer Menu (Ordered: Strona główna -> O nas -> Usługi -> Galeria -> Kontakt) */}
-      <ul className={`mobile-nav-menu ${isMobileMenuOpen ? 'open' : ''}`}>
+      <ul className={`mobile-nav-menu ${isMobileMenuOpen ? 'open' : ''}`} role="navigation" aria-label="Menu mobilne">
         <li>
           <a
             href="#home"
@@ -202,7 +202,7 @@ export default function Header() {
 
       {/* Mobile Drawer Overlay */}
       {isMobileMenuOpen && (
-        <div className="mobile-nav-overlay" onClick={() => setIsMobileMenuOpen(false)} />
+        <div className="mobile-nav-overlay" onClick={() => setIsMobileMenuOpen(false)} role="button" aria-label="Zamknij menu" tabIndex={0} onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') setIsMobileMenuOpen(false); }} />
       )}
     </>
   );

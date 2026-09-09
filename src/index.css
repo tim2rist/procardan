@@ -362,6 +362,10 @@ img {
   font-size: 24px;
   z-index: 1101;
   position: relative;
+  min-width: 44px;
+  min-height: 44px;
+  align-items: center;
+  justify-content: center;
 }
 
 /* Mobile Nav Drawer */
