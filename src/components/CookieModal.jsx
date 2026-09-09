@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
 export default function CookieModal({ isOpen, onClose, onSave, savedPreferences }) {
   const [preferences, setPreferences] = useState({
@@ -7,30 +7,49 @@ export default function CookieModal({ isOpen, onClose, onSave, savedPreferences 
     marketing: false,
   });
 
-  // Synchronize state when modal is opened or when parent preferences update
+  // Sync local state when the modal opens or parent preferences change.
   useEffect(() => {
-    if (isOpen && savedPreferences) {
-      setPreferences(savedPreferences);
-    }
+    if (isOpen && savedPreferences) setPreferences(savedPreferences);
   }, [isOpen, savedPreferences]);
 
   if (!isOpen) return null;
 
-  const handleToggle = (key) => {
-    if (key === 'essential') return; // Cannot disable essential cookies
-    setPreferences((prev) => ({
-      ...prev,
-      [key]: !prev[key],
-    }));
+  const toggle = (key) => {
+    if (key === 'essential') return; // Essential cookies cannot be disabled.
+    setPreferences((prev) => ({ ...prev, [key]: !prev[key] }));
   };
 
-  const handleSave = () => {
-    onSave(preferences);
-    onClose();
-  };
+  const COOKIE_OPTIONS = [
+    {
+      key: 'essential',
+      label: 'Niezbędne',
+      badge: <span className="cookie-badge-required">Wymagane</span>,
+      desc: 'Te pliki cookie są kluczowe dla prawidłowego działania naszej strony, umożliwiając bezpieczną nawigację i poprawne ładowanie zawartości.',
+      disabled: true,
+    },
+    {
+      key: 'analytical',
+      label: 'Statystyki i Analizy',
+      desc: 'Pomagają nam analizować ruch na stronie i optymalizować działanie serwisu. Wszystkie dane statystyczne są zbierane anonimowo.',
+      ariaLabel: 'Ciasteczka analityczne',
+    },
+    {
+      key: 'marketing',
+      label: 'Marketing i Reklama',
+      desc: 'Umożliwiają dostosowanie treści promocyjnych do Twoich preferencji oraz optymalizację prowadzonych działań reklamowych.',
+      ariaLabel: 'Ciasteczka marketingowe',
+    },
+  ];
 
   return (
-    <div className="cookie-modal-overlay" onClick={onClose} role="button" aria-label="Zamknij ustawienia prywatności" tabIndex={0} onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') onClose(); }}>
+    <div
+      className="cookie-modal-overlay"
+      onClick={onClose}
+      role="button"
+      aria-label="Zamknij ustawienia prywatności"
+      tabIndex={0}
+      onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') onClose(); }}
+    >
       <div className="cookie-modal animate-fade-in-up" onClick={(e) => e.stopPropagation()}>
         <div className="cookie-modal-header">
           <h3>Ustawienia Prywatności</h3>
@@ -41,83 +60,46 @@ export default function CookieModal({ isOpen, onClose, onSave, savedPreferences 
             </svg>
           </button>
         </div>
-        
+
         <div className="cookie-modal-body">
           <p style={{ fontSize: '13px', color: 'var(--color-gray-text)', marginBottom: '10px' }}>
             Szanujemy Twoją prywatność. Poniżej możesz dostosować zgody na wykorzystanie plików cookie w naszym serwisie.
           </p>
 
-          {/* Option 1: Essential (Checked & Disabled by default) */}
-          <div className="cookie-option-card">
-            <div className="cookie-option-checkbox-wrapper">
-              <input
-                type="checkbox"
-                id="cookie-essential"
-                className="form-checkbox"
-                checked={preferences.essential}
-                disabled
-              />
+          {COOKIE_OPTIONS.map(({ key, label, badge, desc, disabled, ariaLabel }) => (
+            <div
+              key={key}
+              className="cookie-option-card"
+              onClick={() => toggle(key)}
+              style={!disabled ? { cursor: 'pointer' } : undefined}
+            >
+              <div className="cookie-option-checkbox-wrapper">
+                <input
+                  type="checkbox"
+                  id={`cookie-${key}`}
+                  className="form-checkbox"
+                  checked={preferences[key]}
+                  disabled={disabled}
+                  onChange={() => {}}
+                  aria-label={ariaLabel}
+                />
+              </div>
+              <div className="cookie-option-text">
+                <h4>{label} {badge}</h4>
+                <p>{desc}</p>
+              </div>
             </div>
-            <div className="cookie-option-text">
-              <h4>
-                Niezbędne <span className="cookie-badge-required">Wymagane</span>
-              </h4>
-              <p>
-                Te pliki cookie są kluczowe dla prawidłowego działania naszej strony, umożliwiając bezpieczną nawigację i poprawne ładowanie zawartości.
-              </p>
-            </div>
-          </div>
-
-          {/* Option 2: Analytical (Unchecked by default) */}
-          <div className="cookie-option-card" onClick={() => handleToggle('analytical')} style={{ cursor: 'pointer' }}>
-            <div className="cookie-option-checkbox-wrapper">
-              <input
-                type="checkbox"
-                id="cookie-analytical"
-                className="form-checkbox"
-                checked={preferences.analytical}
-                onChange={() => {}}
-                aria-label="Ciasteczka analityczne"
-              />
-            </div>
-            <div className="cookie-option-text">
-              <h4>Statystyki i Analizy</h4>
-              <p>
-                Pomagają nam analizować ruch na stronie i optymalizować działanie serwisu. Wszystkie dane statystyczne są zbierane anonimowo.
-              </p>
-            </div>
-          </div>
-
-          {/* Option 3: Marketing (Unchecked by default) */}
-          <div className="cookie-option-card" onClick={() => handleToggle('marketing')} style={{ cursor: 'pointer' }}>
-            <div className="cookie-option-checkbox-wrapper">
-              <input
-                type="checkbox"
-                id="cookie-marketing"
-                className="form-checkbox"
-                checked={preferences.marketing}
-                onChange={() => {}}
-                aria-label="Ciasteczka marketingowe"
-              />
-            </div>
-            <div className="cookie-option-text">
-              <h4>Marketing i Reklama</h4>
-              <p>
-                Umożliwiają dostosowanie treści promocyjnych do Twoich preferencji oraz optymalizację prowadzonych działań reklamowych.
-              </p>
-            </div>
-          </div>
+          ))}
         </div>
 
         <div className="cookie-modal-footer">
-          <button className="btn btn-secondary" onClick={() => {
-            const acceptAll = { essential: true, analytical: true, marketing: true };
-            onSave(acceptAll);
-            onClose();
-          }}>
+          <button
+            className="btn btn-secondary"
+            onClick={() => { onSave({ essential: true, analytical: true, marketing: true }); onClose(); }}
+          >
             Akceptuj wszystkie
           </button>
-          <button className="btn btn-primary" onClick={handleSave}>
+          <button className="btn btn-primary" onClick={() => { onSave(preferences); onClose(); }}>
             Zapisz preferencje
           </button>
         </div>
