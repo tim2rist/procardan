@@ -12,10 +12,7 @@ export default function AboutUs() {
             
             <div className="about-text">
               <p>
-                W <strong>ProCardan</strong> specjalizujemy się w profesjonalnym serwisie, wyważaniu oraz produkcji wałów napędowych. Łączymy pasję do mechaniki precyzyjnej z nowoczesną technologią obróbki metalu.
-              </p>
-              <p>
-                Kluczowym elementem naszej pracy jest eliminacja bicia i wibracji. Stosujemy zaawansowane, dynamiczne wyważarki renomowanych firm. Maszyny te diagnozują odchylenia rzędu setnych części grama, co przekłada się na długą, bezawaryjną pracę podpór, przegubów oraz skrzyń biegów. Każdy wyprodukowany lub naprawiony wał przechodzi dokładną kontrolę.
+                Firma <strong>ProCardan</strong> świadczy profesjonalne usługi w zakresie: <u>regeneracji wałów napędowych</u>, <u>dynamicznego wyważania</u> oraz <u>produkcji wałów na zamówienie</u>. Zapraszamy do kontaktu klientów indywidualnych oraz firmy transportowe. Zapewniamy szybki transport, diagnozę i terminową realizację zleceń.
               </p>
             </div>
 
