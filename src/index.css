@@ -991,7 +991,7 @@ img {
 .contact-hours {
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 16px;
   padding: 18px 20px;
   background-color: #f8fafc;
   border-radius: 12px;
@@ -1007,13 +1007,20 @@ img {
   line-height: 1.45;
 }
 
-.hours-item div {
+.hours-content {
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 4px;
 }
 
-.hours-item strong {
+.hours-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.hours-item strong,
+.hours-title {
   font-weight: 700;
   color: #0f172a;
 }
