@@ -180,6 +180,28 @@
       font-feature-settings: "liga" 0, "clig" 0;
     }
 
+    .bottom-website {
+      text-align: center;
+    }
+
+    .bottom-web-label {
+      font-size: 0.7cqw;
+      font-weight: 600;
+      color: #64748b;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 0.2cqw;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: geometricPrecision;
+    }
+
+    .bottom-web {
+      font-size: 1.15cqw;
+      font-weight: 700;
+      color: #e2e8f0;
+    }
+
     .bottom-email {
       font-size: 1.15cqw;
       font-weight: 700;
@@ -288,12 +310,12 @@
         <rect x="1340" y="175" width="40" height="115" rx="5" fill="#94a3b8"/>
         <!-- Universal joint left -->
         <circle cx="350" cy="233" r="40" stroke="#94a3b8" stroke-width="6" fill="none"/>
-        <line x1="350" y1="185" x2="350" y2="280" stroke="#94a3b8" stroke-width="8"/>
-        <line x1="300" y1="233" x2="400" y2="233" stroke="#94a3b8" stroke-width="8"/>
+        <line x1="350" y1="185" x2="350" y2="280" stroke="#94a3b8" stroke-width="8" stroke-linecap="round"/>
+        <line x1="300" y1="233" x2="400" y2="233" stroke="#94a3b8" stroke-width="8" stroke-linecap="round"/>
         <!-- Universal joint right -->
         <circle cx="1050" cy="233" r="40" stroke="#94a3b8" stroke-width="6" fill="none"/>
-        <line x1="1050" y1="185" x2="1050" y2="280" stroke="#94a3b8" stroke-width="8"/>
-        <line x1="1000" y1="233" x2="1100" y2="233" stroke="#94a3b8" stroke-width="8"/>
+        <line x1="1050" y1="185" x2="1050" y2="280" stroke="#94a3b8" stroke-width="8" stroke-linecap="round"/>
+        <line x1="1000" y1="233" x2="1100" y2="233" stroke="#94a3b8" stroke-width="8" stroke-linecap="round"/>
         <!-- Center support -->
         <circle cx="700" cy="233" r="35" stroke="#94a3b8" stroke-width="5" fill="none"/>
         <circle cx="700" cy="233" r="14" fill="#94a3b8"/>
@@ -326,11 +348,15 @@
           </div>
         </div>
 
-        <!-- Bottom Row: Address + Email -->
+        <!-- Bottom Row: Address + Website + Email -->
         <div class="bottom-row">
           <div>
             <p class="address-label">Lokalizacja:</p>
             <p class="address-text">ul. Wodzisławska 1, 52-017 Wrocław</p>
+          </div>
+          <div class="bottom-website">
+            <p class="bottom-web-label">WWW:</p>
+            <p class="bottom-web">www.procardan.pl</p>
           </div>
           <div class="bottom-contact">
             <p class="bottom-email-label">E-MAIL:</p>

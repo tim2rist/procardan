@@ -5,7 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Wizytówka — ProCardan</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet" />
 
   <style>
     * {
@@ -155,15 +156,20 @@
 
     .service-bullet {
       color: #ef4444;
-      font-size: 8pt;
+      font-size: 7.5pt;
       line-height: 1;
       font-weight: 700;
+      flex-shrink: 0;
     }
 
     .service-text {
-      font-size: 6pt;
+      font-family: 'JetBrains Mono', 'Space Mono', SFMono-Regular, Consolas, monospace;
+      font-size: 5.5pt;
       font-weight: 600;
       color: #e2e8f0;
+      letter-spacing: -0.15px;
+      line-height: 1.25;
+      white-space: nowrap;
     }
 
     .back-footer {
@@ -276,10 +282,10 @@
         <rect x="10" y="75" width="20" height="80" rx="3" fill="#94a3b8"/>
         <rect x="370" y="75" width="20" height="80" rx="3" fill="#94a3b8"/>
         <!-- Universal joint crosses -->
-        <line x1="100" y1="80" x2="100" y2="150" stroke="#94a3b8" stroke-width="6"/>
-        <line x1="70" y1="115" x2="130" y2="115" stroke="#94a3b8" stroke-width="6"/>
-        <line x1="300" y1="80" x2="300" y2="150" stroke="#94a3b8" stroke-width="6"/>
-        <line x1="270" y1="115" x2="330" y2="115" stroke="#94a3b8" stroke-width="6"/>
+        <line x1="100" y1="80" x2="100" y2="150" stroke="#94a3b8" stroke-width="6" stroke-linecap="round"/>
+        <line x1="70" y1="115" x2="130" y2="115" stroke="#94a3b8" stroke-width="6" stroke-linecap="round"/>
+        <line x1="300" y1="80" x2="300" y2="150" stroke="#94a3b8" stroke-width="6" stroke-linecap="round"/>
+        <line x1="270" y1="115" x2="330" y2="115" stroke="#94a3b8" stroke-width="6" stroke-linecap="round"/>
         <!-- Center support bearing -->
         <circle cx="200" cy="115" r="22" stroke="#94a3b8" stroke-width="4" fill="none"/>
         <circle cx="200" cy="115" r="10" fill="#94a3b8"/>
@@ -300,9 +306,9 @@
         <!-- Center: Contact Block -->
         <div class="contact-grid">
           <span class="contact-label">TEL:</span>
-          <span class="contact-value">+48 500-05-23-23</span>
+          <span class="contact-value">+48 500 05 23 23</span>
 
-          <span class="contact-label">MAIL:</span>
+          <span class="contact-label">E-MAIL:</span>
           <span class="contact-value">procardan1@gmail.com</span>
 
           <span class="contact-label">WWW:</span>
@@ -330,10 +336,10 @@
         <rect x="20" y="95" width="360" height="40" rx="4" fill="#94a3b8"/>
         <rect x="10" y="75" width="20" height="80" rx="3" fill="#94a3b8"/>
         <rect x="370" y="75" width="20" height="80" rx="3" fill="#94a3b8"/>
-        <line x1="100" y1="80" x2="100" y2="150" stroke="#94a3b8" stroke-width="6"/>
-        <line x1="70" y1="115" x2="130" y2="115" stroke="#94a3b8" stroke-width="6"/>
-        <line x1="300" y1="80" x2="300" y2="150" stroke="#94a3b8" stroke-width="6"/>
-        <line x1="270" y1="115" x2="330" y2="115" stroke="#94a3b8" stroke-width="6"/>
+        <line x1="100" y1="80" x2="100" y2="150" stroke="#94a3b8" stroke-width="6" stroke-linecap="round"/>
+        <line x1="70" y1="115" x2="130" y2="115" stroke="#94a3b8" stroke-width="6" stroke-linecap="round"/>
+        <line x1="300" y1="80" x2="300" y2="150" stroke="#94a3b8" stroke-width="6" stroke-linecap="round"/>
+        <line x1="270" y1="115" x2="330" y2="115" stroke="#94a3b8" stroke-width="6" stroke-linecap="round"/>
         <circle cx="200" cy="115" r="22" stroke="#94a3b8" stroke-width="4" fill="none"/>
         <circle cx="200" cy="115" r="10" fill="#94a3b8"/>
       </svg>
@@ -383,7 +389,7 @@
         <!-- Bottom -->
         <div class="back-footer">
           <span class="back-footer-left">ul. Wodzisławska 1, 52-017 Wrocław</span>
-          <span class="back-footer-right">+48 500-05-23-23</span>
+          <span class="back-footer-right">+48 500 05 23 23</span>
         </div>
       </div>
     </div>

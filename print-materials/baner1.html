@@ -66,7 +66,20 @@
     .top-row {
       display: flex;
       align-items: center;
+      justify-content: space-between;
+    }
+
+    .top-left {
+      display: flex;
+      align-items: center;
       gap: 2cqw;
+    }
+
+    .banner-web {
+      font-size: 2.2cqw;
+      font-weight: 700;
+      color: #94a3b8;
+      letter-spacing: 0.5px;
     }
 
     .banner-logo {
@@ -271,31 +284,36 @@
 
       <!-- Driveshaft SVG Background -->
       <svg class="banner-bg-overlay" viewBox="0 0 700 700" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <!-- Main shaft running diagonally -->
-        <rect x="50" y="320" width="600" height="60" rx="6" fill="#94a3b8" transform="rotate(-8 350 350)"/>
-        <!-- Flanges -->
-        <rect x="30" y="295" width="30" height="110" rx="5" fill="#94a3b8" transform="rotate(-8 45 350)"/>
-        <rect x="640" y="295" width="30" height="110" rx="5" fill="#94a3b8" transform="rotate(-8 655 350)"/>
-        <!-- Universal joints -->
-        <circle cx="200" cy="340" r="35" stroke="#94a3b8" stroke-width="6" fill="none"/>
-        <circle cx="500" cy="340" r="35" stroke="#94a3b8" stroke-width="6" fill="none"/>
-        <line x1="200" y1="300" x2="200" y2="380" stroke="#94a3b8" stroke-width="8"/>
-        <line x1="160" y1="340" x2="240" y2="340" stroke="#94a3b8" stroke-width="8"/>
-        <line x1="500" y1="300" x2="500" y2="380" stroke="#94a3b8" stroke-width="8"/>
-        <line x1="460" y1="340" x2="540" y2="340" stroke="#94a3b8" stroke-width="8"/>
-        <!-- Center bearing -->
-        <circle cx="350" cy="350" r="30" stroke="#94a3b8" stroke-width="5" fill="none"/>
-        <circle cx="350" cy="350" r="12" fill="#94a3b8"/>
+        <g transform="rotate(-8 350 350)">
+          <!-- Main shaft running diagonally -->
+          <rect x="50" y="320" width="600" height="60" rx="6" fill="#94a3b8"/>
+          <!-- Flanges -->
+          <rect x="30" y="295" width="30" height="110" rx="5" fill="#94a3b8"/>
+          <rect x="640" y="295" width="30" height="110" rx="5" fill="#94a3b8"/>
+          <!-- Universal joints -->
+          <circle cx="190" cy="350" r="35" stroke="#94a3b8" stroke-width="6" fill="none"/>
+          <circle cx="510" cy="350" r="35" stroke="#94a3b8" stroke-width="6" fill="none"/>
+          <line x1="190" y1="310" x2="190" y2="390" stroke="#94a3b8" stroke-width="8" stroke-linecap="round"/>
+          <line x1="150" y1="350" x2="230" y2="350" stroke="#94a3b8" stroke-width="8" stroke-linecap="round"/>
+          <line x1="510" y1="310" x2="510" y2="390" stroke="#94a3b8" stroke-width="8" stroke-linecap="round"/>
+          <line x1="470" y1="350" x2="550" y2="350" stroke="#94a3b8" stroke-width="8" stroke-linecap="round"/>
+          <!-- Center bearing -->
+          <circle cx="350" cy="350" r="30" stroke="#94a3b8" stroke-width="5" fill="none"/>
+          <circle cx="350" cy="350" r="12" fill="#94a3b8"/>
+        </g>
       </svg>
 
       <div class="banner-content">
 
-        <!-- Top: Logo -->
+        <!-- Top: Logo & Website -->
         <div class="top-row">
-          <img src="../public/logo_mark.png" alt="ProCardan Logo" class="banner-logo" />
-          <span class="banner-brand">
-            Pro<span class="banner-brand-accent">Cardan</span>
-          </span>
+          <div class="top-left">
+            <img src="../public/logo_mark.png" alt="ProCardan Logo" class="banner-logo" />
+            <span class="banner-brand">
+              Pro<span class="banner-brand-accent">Cardan</span>
+            </span>
+          </div>
+          <span class="banner-web">www.procardan.pl</span>
         </div>
 
         <!-- Center: Headline -->
