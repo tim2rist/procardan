@@ -30,12 +30,7 @@ export default function SEOKeywords() {
         {/* CTA Text Block */}
         <div className="seo-cta-block">
           <p className="seo-text">
-            Firma <strong>ProCardan</strong> świadczy profesjonalne usługi w zakresie:{' '}
-            <strong>regeneracja wałów napędowych</strong>,{' '}
-            <strong>wyważanie dynamiczne</strong> oraz{' '}
-            <strong>produkcja wałów na zamówienie</strong>. Zapraszamy do kontaktu klientów
-            indywidualnych oraz firmy transportowe. Zapewniamy szybki transport, diagnozę
-            i terminową realizację zleceń.
+            Firma <strong>ProCardan</strong> świadczy profesjonalne usługi w zakresie: regeneracji wałów napędowych, dynamicznego wyważania oraz produkcji wałów na zamówienie. Zapraszamy do kontaktu klientów indywidualnych oraz firmy transportowe. Zapewniamy szybki transport, diagnozę i terminową realizację zleceń.
           </p>
         </div>
 
