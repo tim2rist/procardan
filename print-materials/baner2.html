@@ -148,8 +148,12 @@
       justify-content: space-between;
     }
 
+    .bottom-address {
+      text-align: left;
+    }
+
     .address-label {
-      font-size: 0.7cqw;
+      font-size: 0.75cqw;
       font-weight: 600;
       color: #64748b;
       text-transform: uppercase;
@@ -158,7 +162,7 @@
     }
 
     .address-text {
-      font-size: 1.15cqw;
+      font-size: 1.2cqw;
       font-weight: 700;
       color: #e2e8f0;
     }
@@ -168,7 +172,7 @@
     }
 
     .bottom-email-label {
-      font-size: 0.7cqw;
+      font-size: 0.75cqw;
       font-weight: 600;
       color: #64748b;
       text-transform: uppercase;
@@ -180,30 +184,8 @@
       font-feature-settings: "liga" 0, "clig" 0;
     }
 
-    .bottom-website {
-      text-align: center;
-    }
-
-    .bottom-web-label {
-      font-size: 0.7cqw;
-      font-weight: 600;
-      color: #64748b;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      margin-bottom: 0.2cqw;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-      text-rendering: geometricPrecision;
-    }
-
-    .bottom-web {
-      font-size: 1.15cqw;
-      font-weight: 700;
-      color: #e2e8f0;
-    }
-
     .bottom-email {
-      font-size: 1.15cqw;
+      font-size: 1.2cqw;
       font-weight: 700;
       color: #e2e8f0;
     }
@@ -348,15 +330,11 @@
           </div>
         </div>
 
-        <!-- Bottom Row: Address + Website + Email -->
+        <!-- Bottom Row: Address + Email -->
         <div class="bottom-row">
-          <div>
+          <div class="bottom-address">
             <p class="address-label">Lokalizacja:</p>
             <p class="address-text">ul. Wodzisławska 1, 52-017 Wrocław</p>
-          </div>
-          <div class="bottom-website">
-            <p class="bottom-web-label">WWW:</p>
-            <p class="bottom-web">www.procardan.pl</p>
           </div>
           <div class="bottom-contact">
             <p class="bottom-email-label">E-MAIL:</p>
