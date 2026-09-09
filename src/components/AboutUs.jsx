@@ -12,7 +12,7 @@ export default function AboutUs() {
             
             <div className="about-text">
               <p>
-                Firma <strong>ProCardan</strong> świadczy profesjonalne usługi w zakresie: <u>regeneracji wałów napędowych</u>, <u>dynamicznego wyważania</u> oraz <u>produkcji wałów na zamówienie</u>. Zapraszamy do kontaktu klientów indywidualnych oraz firmy transportowe. Zapewniamy szybki transport, diagnozę i terminową realizację zleceń.
+                Jesteśmy rzetelnym partnerem w branży motoryzacyjnej i przemysłowej. Specjalizujemy się w kompleksowej obsłudze wałów napędowych do samochodów osobowych, dostawczych, ciężarowych oraz maszyn przemysłowych. Stawiamy na precyzję, nowoczesny park maszynowy i bezkompromisową jakość.
               </p>
             </div>
 
