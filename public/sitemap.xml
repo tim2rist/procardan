@@ -3,16 +3,16 @@
 
   <!-- Main landing page (single-page app) -->
   <url>
-    <loc>https://procardan.pl/</loc>
-    <lastmod>2026-08-26</lastmod>
+    <loc>https://www.procardan.pl/</loc>
+    <lastmod>2026-09-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
 
   <!-- Privacy policy (standalone static page) -->
   <url>
-    <loc>https://procardan.pl/polityka-prywatnosci.html</loc>
-    <lastmod>2026-08-26</lastmod>
+    <loc>https://www.procardan.pl/polityka-prywatnosci.html</loc>
+    <lastmod>2026-09-22</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>

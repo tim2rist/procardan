@@ -3,4 +3,4 @@ Allow: /
 Disallow: /api/
 
 # Point crawlers to the sitemap
-Sitemap: https://procardan.pl/sitemap.xml
+Sitemap: https://www.procardan.pl/sitemap.xml
